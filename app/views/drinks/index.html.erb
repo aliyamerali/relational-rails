@@ -1,0 +1,11 @@
+<h2>Drinks</h2>
+
+<% @drinks.each do |drink| %>
+  <section id="drink-<%= drink.id %>">
+    <li>Name : <%= drink.name %></li><br/>
+    <li>Cost : $<%= drink.cost %></li><br/>
+    <li>ABV : <%= drink.abv %></li><br/>
+    <li>Popular? <%= drink.popular %></li><br/>
+    <p>----------------------------------</p>
+  </section>
+<% end %>
