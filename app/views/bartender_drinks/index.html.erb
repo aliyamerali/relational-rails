@@ -1,0 +1,9 @@
+<h3><%= @bartender.name %>'s Drinks</h3><br/>
+
+<% @drinks.each do |drink| %>
+  <li>Name : <%= drink.name %></li><br/>
+  <li>Cost : $ <%= drink.cost %></li><br/>
+  <li>ABV : <%= drink.abv %></li><br/>
+  <li>Popular ? <%= drink.popular %></li><br/>
+  <p>--------------------------------</p>
+<% end %>
