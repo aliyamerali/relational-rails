@@ -19,9 +19,46 @@ RSpec.describe 'Drinks Index Page' do
   end
 
   it "I see each Child in the system including the Child's attributes" do
-    expect(page).to have_content(@drink1.name)
-    expect(page).to have_content(@drink1.cost)
-    expect(page).to have_content(@drink1.abv)
-    expect(page).to have_content(@drink1.popular)
+    within("#drink-#{@drink1.id}") do
+      expect(page).to have_content(@drink1.name)
+      expect(page).to have_content(@drink1.cost)
+      expect(page).to have_content(@drink1.abv)
+      expect(page).to have_content(@drink1.popular)
+    end
+
+    within("#drink-#{@drink2.id}") do
+      expect(page).to have_content(@drink2.name)
+      expect(page).to have_content(@drink2.cost)
+      expect(page).to have_content(@drink2.abv)
+      expect(page).to have_content(@drink2.popular)
+    end
+
+    within("#drink-#{@drink3.id}") do
+      expect(page).to have_content(@drink3.name)
+      expect(page).to have_content(@drink3.cost)
+      expect(page).to have_content(@drink3.abv)
+      expect(page).to have_content(@drink3.popular)
+    end
+
+    within("#drink-#{@drink4.id}") do
+      expect(page).to have_content(@drink4.name)
+      expect(page).to have_content(@drink4.cost)
+      expect(page).to have_content(@drink4.abv)
+      expect(page).to have_content(@drink4.popular)
+    end
+
+    within("#drink-#{@drink5.id}") do
+      expect(page).to have_content(@drink5.name)
+      expect(page).to have_content(@drink5.cost)
+      expect(page).to have_content(@drink5.abv)
+      expect(page).to have_content(@drink5.popular)
+    end
+
+    within("#drink-#{@drink6.id}") do
+      expect(page).to have_content(@drink6.name)
+      expect(page).to have_content(@drink6.cost)
+      expect(page).to have_content(@drink6.abv)
+      expect(page).to have_content(@drink6.popular)
+    end
   end
 end
