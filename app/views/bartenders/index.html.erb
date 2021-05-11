@@ -1,0 +1,9 @@
+<h3>Bartenders</h3>
+
+<% @bartenders.each do |bartender| %>
+  <section id="bartender-<%= bartender.id %>">
+    <ul>
+      <li><%= bartender.name %></li><br/>
+    </ul>
+  </section>
+<% end %>
