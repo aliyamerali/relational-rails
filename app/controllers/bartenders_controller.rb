@@ -1,6 +1,6 @@
 class BartendersController < ApplicationController
   def index
-    @bartenders = Bartender.all
+    @bartenders = Bartender.most_recently_created
   end
 
   def show
