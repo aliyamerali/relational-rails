@@ -14,3 +14,8 @@ Drink.destroy_all
 
 @drink5 = @bartender3.drinks.create!(name: "Hurricane", cost: 6.00, abv: 5, popular: false)
 @drink6 = @bartender3.drinks.create!(name: "Gin and Tonic", cost: 7.00, abv: 9, popular: true)
+
+
+@library1 = Library.create!(name: "Denver Central", staff_count: 35, member_count: 5000, open: true)
+@library2 = Library.create!(name: "Ford-Warren", staff_count: 12, member_count: 1200, open: false)
+@library3 = Library.create!(name: "Park Hill", staff_count: 20, member_count: 2300, open: true)
