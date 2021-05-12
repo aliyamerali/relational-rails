@@ -1,5 +1,7 @@
 Bartender.destroy_all
 Drink.destroy_all
+Library.destroy_all
+Book.destroy_all
 
 
 @bartender1 = Bartender.create!(name: "Steve", age: 32, on_vacation: false, city: "Denver")
