@@ -7,6 +7,7 @@ RSpec.describe 'libraries index page', type: :feature do
     library2 = Library.create!(name: "Ford-Warren", staff_count: 12, member_count: 1200, open: false)
     library3 = Library.create!(name: "Park Hill", staff_count: 20, member_count: 2300, open: true)
     visit "/libraries"
+    # save_and_open_page
 
     expect(page).to have_content(library1.name)
     expect(page).to have_content(library2.name)
