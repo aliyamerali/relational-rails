@@ -15,5 +15,4 @@ RSpec.describe 'libraries index page', type: :feature do
     expect(page).to_not have_content(library1.open)
   end
 
-
 end
