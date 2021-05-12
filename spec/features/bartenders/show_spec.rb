@@ -6,6 +6,15 @@ RSpec.describe 'Bartenders show Page' do
     @bartender2 = Bartender.create!(name: "Jill", age: 27, on_vacation: true, city: "Baltimore")
     @bartender3 = Bartender.create!(name: "Aaron", age: 36, on_vacation: false, city: "Austin")
 
+    @drink1 = @bartender1.drinks.create!(name: "Martini", cost: 4.00, abv: 11, popular: true)
+    @drink2 = @bartender1.drinks.create!(name: "4 horsmen", cost: 11.00, abv: 18, popular: false)
+
+    @drink3 = @bartender2.drinks.create!(name: "Mojito", cost: 7.00, abv: 10, popular: true)
+    @drink4 = @bartender2.drinks.create!(name: "Mai Tai", cost: 9.00, abv: 13, popular: true)
+
+    @drink5 = @bartender3.drinks.create!(name: "Hurricane", cost: 6.00, abv: 5, popular: false)
+    @drink6 = @bartender3.drinks.create!(name: "Gin and Tonic", cost: 7.00, abv: 9, popular: true)
+
     visit "/bartenders/#{@bartender1.id}"
   end
 
@@ -17,5 +26,14 @@ RSpec.describe 'Bartenders show Page' do
     expect(page).to_not have_content(@bartender2.name)
     expect(page).to_not have_content(@bartender2.on_vacation)
     expect(page).to_not have_content(@bartender2.city)
+  end
+
+  it "shows the count of the number of children associated with this parent" do
+    within("#drink-count") do
+      save_and_open_page
+      expect(@bartender1.drinks_count).to eq(2)
+
+      expect(@bartender1.drinks_count).to_not eq(1)
+    end
   end
 end
