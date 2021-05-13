@@ -18,5 +18,10 @@ RSpec.describe 'Book Show page', type: :feature do
 
     visit "/books/book1.id"
     save_and_open_page
+
+    expect(page).to have_content(book1.name)
+    expect(page).to have_content(book1.publish_year)
+    expect(page).to have_content(book1.available)
+    expect(page).to have_content(book1.library_id)
   end
 end
