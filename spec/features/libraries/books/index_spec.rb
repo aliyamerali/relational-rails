@@ -30,9 +30,10 @@ RSpec.describe 'Library books index' do
     expect(page).not_to have_content(book6.name)
   end
 
-  it 'has link to books index' do
+  it 'has link to books and libraries indexes' do
     visit "/libraries/#{library2.id}/books"
     expect(page).to have_link("Books Index", :href=>"/books")
+    expect(page).to have_link("Libraries Index", :href=>"/libraries")
   end
 
 end

@@ -28,7 +28,8 @@ RSpec.describe 'libraries index page', type: :feature do
     expect(page).to_not have_content(@library3.updated_at)
   end
 
-  it 'has link to books index' do
+  it 'has link to books and libraries indexes' do
     expect(page).to have_link("Books Index", :href=>"/books")
+    expect(page).to have_link("Libraries Index", :href=>"/libraries")
   end
 end
