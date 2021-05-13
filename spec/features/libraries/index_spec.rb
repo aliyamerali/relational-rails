@@ -22,10 +22,13 @@ RSpec.describe 'libraries index page', type: :feature do
   end
 
   it 'shows when each record was created' do
-    save_and_open_page
     expect(page).to have_content(@library1.created_at)
     expect(page).to have_content(@library2.created_at)
     expect(page).to have_content(@library3.created_at)
     expect(page).to_not have_content(@library3.updated_at)
+  end
+
+  it 'has link to books index' do
+    expect(page).to have_link("Books", :href=>"/books")
   end
 end
