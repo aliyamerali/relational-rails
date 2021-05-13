@@ -10,7 +10,6 @@ RSpec.describe 'Book Show page', type: :feature do
     book2 = library2.books.create!(name: "1Q84", publish_year: 2011, available: false)
 
     visit "/books/#{book1.id}"
-    save_and_open_page
 
     expect(page).to have_content(book1.name)
     expect(page).to have_content(book1.publish_year)
