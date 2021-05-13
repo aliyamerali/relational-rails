@@ -49,4 +49,9 @@ RSpec.describe 'libraries show page', type: :feature do
     expect(page).to have_content("Total Book Count: 1")
   end
 
+  it 'has link to books index' do
+    visit "/libraries/#{@library1.id}"
+    expect(page).to have_link("Books Index", :href=>"/books")
+  end
+
 end
