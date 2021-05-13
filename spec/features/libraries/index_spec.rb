@@ -32,4 +32,8 @@ RSpec.describe 'libraries index page', type: :feature do
     expect(page).to have_link("Books Index", :href=>"/books")
     expect(page).to have_link("Libraries Index", :href=>"/libraries")
   end
+
+  it 'has a link to create a new library' do
+    expect(page).to have_link("Create New Library", :href=>"/libraries/new")
+  end
 end
