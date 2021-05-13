@@ -13,4 +13,6 @@ Rails.application.routes.draw do
 
   # parent child
   get "/bartenders/:id/drinks", to: 'bartender_drinks#index'
+
+  get "/libraries/:id/books", to: 'library_books#index'
 end

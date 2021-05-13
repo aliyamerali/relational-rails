@@ -1,4 +1,7 @@
 <h1>Libraries</h1>
 <% @libraries.each do |library| %>
-<li><%= library.name %></li>
+<li><%= library.name %> </li>
+  <ul>
+    <li><em>record created at: <%= library.created_at %></em></li>
+  </ul>
 <% end %>
