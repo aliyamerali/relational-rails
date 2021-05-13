@@ -9,4 +9,7 @@ class LibrariesController < ApplicationController
     @book_count = @library.books.count
   end
 
+  def new
+  end
+
 end
