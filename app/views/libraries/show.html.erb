@@ -1,5 +1,7 @@
 <h3><%= @library.name %> Library</h3>
 
+<a href="/libraries/<%= @library.id %>/books">Books at this Library</a>
+
 <ul>
 <li>Total Book Count: <%=@book_count %></li>
 <li>Staff Count: <%=@library.staff_count %></li>
