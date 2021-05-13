@@ -13,4 +13,12 @@ RSpec.describe 'library edit form', type: :feature do
     expect(page).to have_field('member_count', :with => @library.member_count)
     expect(page).to have_field('open', :with => @library.open)
   end
+
+  it 'creates a patch request with information entered to form' do
+    fill_in 'name', with: 'Cherry Creek'
+    click_button 'submit'
+
+    expect(page).to have_current_path("/libraries/#{@library.id}")
+    expect(page).to have_content('Cherry Creek')
+  end
 end
