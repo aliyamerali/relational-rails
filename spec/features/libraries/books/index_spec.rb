@@ -23,6 +23,7 @@ RSpec.describe 'Library books index' do
     expect(page).to have_content(book2.publish_year)
     expect(page).not_to have_content(book3.name)
 
+    visit "/libraries/#{library2.id}/books"
     expect(page).to have_content(book3.name)
     expect(page).to have_content(book3.available)
     expect(page).to have_content(book4.name)
@@ -31,6 +32,7 @@ RSpec.describe 'Library books index' do
   end
 
   it 'has link to books and libraries indexes' do
+    library2 = Library.create!(name: "Ford-Warren", staff_count: 12, member_count: 1200, open: false)
     visit "/libraries/#{library2.id}/books"
     expect(page).to have_link("Books Index", :href=>"/books")
     expect(page).to have_link("Libraries Index", :href=>"/libraries")
