@@ -15,10 +15,10 @@ RSpec.describe 'libraries new page and create functionality', type: :feature do
     fill_in 'name', with: 'Cherry Creek'
     fill_in 'staff_count', with: '18'
     fill_in 'member_count', with: '750'
-    choose('open', {option: "Yes"})
+    choose('open', {option: false})
     click_button 'submit'
 
-    visit '/libraries'
+    expect(page).to have_current_path('/libraries')
     expect(page).to have_content('Cherry Creek')
   end
 

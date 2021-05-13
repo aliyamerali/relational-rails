@@ -13,6 +13,11 @@ class LibrariesController < ApplicationController
   end
 
   def create
+    library = Library.create(name: params[:name],
+                            staff_count: params[:staff_count],
+                            member_count: params[:member_count],
+                            open: params[:open])
 
+    redirect_to '/libraries'
   end
 end
