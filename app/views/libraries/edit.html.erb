@@ -1,0 +1,24 @@
+<h1>Update Library</h1>
+
+<form action="/libraries/<%= @library.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  <input type="hidden" name="_method" value="PATCH" />
+
+  <label for="name">Library Name: </label>
+  <input type='text' name='name' value="<%= @library.name %>" /><br>
+
+  <label for="staff_count">Library Staff Count: </label>
+  <input type='number' name='staff_count' value="<%= @library.staff_count %>"/><br>
+
+  <label for="member_count">Library Member Count: </label>
+  <input type='number' name='member_count' value="<%= @library.member_count %>"/><br>
+  <label for="open">Is this library open?</label>
+    <% if @library.open  %>
+      <p><input type="radio" name="open" value=true checked >Yes</input>
+         <input type="radio" name="open" value=false >No</input></p>
+    <% else %>
+    <p><input type="radio" name="open" value=true  >Yes</input>
+       <input type="radio" name="open" value=false checked >No</input></p>
+    <% end %>
+  <input type='submit' name='submit' value = 'Update Library'>
+  </form>

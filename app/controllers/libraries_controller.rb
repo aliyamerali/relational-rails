@@ -22,5 +22,6 @@ class LibrariesController < ApplicationController
   end
 
   def edit
+    @library = Library.find(params[:id])
   end
 end
