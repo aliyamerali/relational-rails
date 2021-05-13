@@ -17,12 +17,12 @@ RSpec.describe 'libraries index page', type: :feature do
   end
 
   it 'returns libraries in order of creation, with most recently created first' do
-    save_and_open_page
     expect(@library3.name).to appear_before(@library2.name)
     expect(@library2.name).to appear_before(@library1.name)
   end
 
   it 'shows when each record was created' do
+    save_and_open_page
     expect(page).to have_content(@library1.created_at)
     expect(page).to have_content(@library2.created_at)
     expect(page).to have_content(@library3.created_at)

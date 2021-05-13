@@ -1,8 +1,7 @@
 class LibrariesController < ApplicationController
 
   def index
-    @libraries = Library.all
-    # binding.pry
+    @libraries = Library.order(created_at: :desc)
   end
 
   def show
