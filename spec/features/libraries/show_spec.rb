@@ -55,4 +55,9 @@ RSpec.describe 'libraries show page', type: :feature do
     expect(page).to have_link("Libraries Index", :href=>"/libraries")
   end
 
+  it 'has link to the library\'s books page' do
+    visit "/libraries/#{@library1.id}"
+    expect(page).to have_link("Books at this Library", :href=>"/libraries/:id/books")
+  end
+
 end
