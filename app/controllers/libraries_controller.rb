@@ -2,6 +2,7 @@ class LibrariesController < ApplicationController
 
   def index
     @libraries = Library.all
+    # binding.pry
   end
 
   def show
