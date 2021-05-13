@@ -12,4 +12,7 @@ class LibrariesController < ApplicationController
   def new
   end
 
+  def create
+
+  end
 end
