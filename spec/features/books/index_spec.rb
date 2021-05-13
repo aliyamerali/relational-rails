@@ -44,4 +44,8 @@ RSpec.describe 'books index page', type: :feature do
     expect(page).to have_content(book6.available)
   end
 
+  it 'has link to books index' do
+    visit "/books"
+    expect(page).to have_link("Books Index", :href=>"/books")
+  end
 end
