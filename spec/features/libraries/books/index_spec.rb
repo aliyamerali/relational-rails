@@ -22,6 +22,13 @@ RSpec.describe 'Library books index' do
     expect(page).to have_content(book2.name)
     expect(page).to have_content(book2.publish_year)
     expect(page).not_to have_content(book3.name)
+
+    visit "/libraries/#{library2.id}/books"
+    expect(page).to have_content(book3.name)
+    expect(page).to have_content(book3.available)
+    expect(page).to have_content(book4.name)
+    expect(page).to have_content(book4.publish_year)
+    expect(page).not_to have_content(book6.name)
   end
 
 end
