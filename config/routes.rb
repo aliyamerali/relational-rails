@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "/libraries/:id", to:'libraries#show'
 
   get "/books", to:'books#index'
+  get "/books/:id", to:'books#show'
 
   # parent child
   get "/bartenders/:id/drinks", to: 'bartender_drinks#index'
