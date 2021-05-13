@@ -1,3 +1,5 @@
+require 'date'
+
 Bartender.destroy_all
 Drink.destroy_all
 Library.destroy_all
@@ -18,9 +20,9 @@ Book.destroy_all
 @drink6 = @bartender3.drinks.create!(name: "Gin and Tonic", cost: 7.00, abv: 9, popular: true)
 
 
-@library1 = Library.create!(name: "Denver Central", staff_count: 35, member_count: 5000, open: true)
-@library2 = Library.create!(name: "Ford-Warren", staff_count: 12, member_count: 1200, open: false)
-@library3 = Library.create!(name: "Park Hill", staff_count: 20, member_count: 2300, open: true)
+@library1 = Library.create!(name: "Denver Central", staff_count: 35, member_count: 5000, open: true, created_at: DateTime.new(2021,2,3,4,5,6))
+@library2 = Library.create!(name: "Ford-Warren", staff_count: 12, member_count: 1200, open: false, created_at: DateTime.new(2020,2,3,4,5,6))
+@library3 = Library.create!(name: "Park Hill", staff_count: 20, member_count: 2300, open: true, created_at: DateTime.new(2019,2,3,4,5,6))
 
 @book1 = @library1.books.create!(name: "Harry Potter and the Sorcerer's Stone", publish_year: 1998, available: true)
 @book2 = @library1.books.create!(name: "1Q84", publish_year: 2011, available: false)
