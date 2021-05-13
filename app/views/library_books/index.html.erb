@@ -1,0 +1,8 @@
+<<h3>All Books</h3>
+<% @books.each do |book| %>
+<h5><%= book.name %></h5>
+<ul>
+<li>Year Published: <%= book.publish_year %></li>
+<li>Currently Available: <%= book.available %></li>
+</ul>
+<% end %>
