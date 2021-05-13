@@ -6,6 +6,7 @@ class LibrariesController < ApplicationController
 
   def show
     @library = Library.find(params[:id])
+    @book_count = @library.books.count
   end
 
 end

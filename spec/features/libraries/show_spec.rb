@@ -40,13 +40,13 @@ RSpec.describe 'libraries show page', type: :feature do
 
   it 'shows the total count of books at the library' do
     visit "/libraries/#{@library1.id}"
-    expect(page).to have_content("Total count of books: 3")
+    expect(page).to have_content("Total Book Count: 3")
 
     visit "/libraries/#{@library2.id}"
-    expect(page).to have_content("Total count of books: 2")
+    expect(page).to have_content("Total Book Count: 2")
 
-    visit "/libraries/#{@library2.id}"
-    expect(page).to have_content("Total count of books: 1")
+    visit "/libraries/#{@library3.id}"
+    expect(page).to have_content("Total Book Count: 1")
   end
 
 end
