@@ -17,7 +17,7 @@ RSpec.describe 'books index page', type: :feature do
     book6 = library3.books.create!(name: "The Ocean at the End of the Lane", publish_year: 2013, available: false)
 
     visit "/books"
-    save_and_open_page
+    # save_and_open_page
 
     expect(page).to have_content(book1.name)
     expect(page).to have_content(book1.publish_year)
