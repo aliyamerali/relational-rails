@@ -20,4 +20,7 @@ class LibrariesController < ApplicationController
 
     redirect_to '/libraries'
   end
+
+  def edit
+  end
 end
