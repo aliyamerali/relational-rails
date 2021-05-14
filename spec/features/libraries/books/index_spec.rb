@@ -38,4 +38,12 @@ RSpec.describe 'Library books index' do
     expect(page).to have_link("Libraries Index", :href=>"/libraries")
   end
 
+  it 'has a link to create a new book' do
+    library2 = Library.create!(name: "Ford-Warren", staff_count: 12, member_count: 1200, open: false)
+    visit "/libraries/#{library2.id}/books"
+
+    expect(page).to have_link("Create Book", :href=>"/libraries/#{library2.id}/books/new")
+
+  end
+
 end
