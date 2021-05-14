@@ -1,0 +1,22 @@
+<h1>Update Book</h1>
+
+<form action="/books/<%= @book.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+  <input type="hidden" name="_method" value="PATCH" />
+
+  <label for="name">Book Name: </label>
+  <input type='text' name='name' value="<%= @book.name %>" /><br>
+
+  <label for="publish_year">Year Published: </label>
+  <input type='number' name='publish_year' value="<%= @book.publish_year %>"/><br>
+
+  <label for="available">Is this book available?</label>
+    <% if @book.available  %>
+      <p><input type="radio" name="available" value=true checked >Yes</input>
+         <input type="radio" name="available" value=false >No</input></p>
+    <% else %>
+    <p><input type="radio" name="available" value=true  >Yes</input>
+       <input type="radio" name="available" value=false checked >No</input></p>
+    <% end %>
+    <input type='submit' name='submit' value = 'Update Book'>
+</form>
