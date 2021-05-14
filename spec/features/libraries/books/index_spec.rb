@@ -49,7 +49,7 @@ RSpec.describe 'Library books index' do
     visit "/libraries/#{@library1.id}/books"
 
     expect(@book1.name).to appear_before(@book2.name)
-    expect(page).to have_link("Sort Books Alphabetically", :href=>"/libraries/#{@library1.id}/books")
+    expect(page).to have_link("Sort Books Alphabetically", :href=>"/libraries/#{@library1.id}/books?sort=alpha")
 
     click_link("Sort Books Alphabetically")
     expect(@book2.name).to appear_before(@book1.name)

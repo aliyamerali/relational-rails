@@ -2,7 +2,11 @@ class LibraryBooksController < ApplicationController
 
   def index
     @library = Library.find(params[:id])
-    @books = @library.books
+    if params[:sort].nil?
+      @books = @library.books
+    else
+      @books = @library.books.order(name: :asc)
+    end
   end
 
   def new
