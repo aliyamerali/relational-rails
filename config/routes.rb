@@ -20,5 +20,5 @@ Rails.application.routes.draw do
 
   get "/libraries/:id/books", to: 'library_books#index'
   get "/libraries/:id/books/new", to:'library_books#new'
-  # post "/libraries/:id/books", to: 'library_books#create'
+  post "/libraries/:id/books", to: 'library_books#create'
 end
