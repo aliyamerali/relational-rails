@@ -1,4 +1,5 @@
 <h3>All Books at <%= @library.name %> Library: </h3>
+<a href="/libraries/<%=@library.id%>/books">Sort Books Alphabetically</a>
 <% @books.each do |book| %>
 <h5><%= book.name %></h5>
 <ul>
