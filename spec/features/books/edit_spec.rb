@@ -14,4 +14,14 @@ RSpec.describe 'Book Edit page', type: :feature do
     expect(page).to have_field('available', :with => @book.available)
   end
 
+
+  it 'updates the book info with information entered to form' do
+    fill_in 'name', with: 'Harry Potter and the Philosopher\'s Stone'
+    choose('available', {option: false})
+    click_button 'submit'
+
+    expect(page).to have_current_path("/books/#{@book.id}")
+    expect(page).to have_content('Harry Potter and the Philosopher\'s Stone')
+  end
+
 end
