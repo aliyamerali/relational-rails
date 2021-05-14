@@ -31,4 +31,9 @@ RSpec.describe 'Book Show page', type: :feature do
     expect(page).to have_link("Books Index", :href=>"/books")
     expect(page).to have_link("Libraries Index", :href=>"/libraries")
   end
+
+  it 'has a link to update the book' do
+    visit "/books/#{@book2.id}"
+    expect(page).to have_link("Update Book", :href=>"/books/#{@book2.id}/edit")
+  end
 end
