@@ -1,0 +1,14 @@
+<h1>Create a New Book</h1>
+
+<form action="/books" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label for="name">Book Name: </label>
+  <input type='text' name='name'/><br>
+  <label for="publish_year">Year Published: </label>
+  <input type='number' name='publish_year'/><br>
+  <label for="available">Is this book currently available?</label>
+    <p><input type="radio" name="available" value=true checked>Yes</input>
+       <input type="radio" name="available" value=false >No</input></p>
+  <input type='submit' name='submit' value = 'Create Book'>
+</form>

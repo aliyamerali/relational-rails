@@ -9,4 +9,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
+  def new
+  end
+
 end
