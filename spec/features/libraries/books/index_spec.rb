@@ -43,7 +43,20 @@ RSpec.describe 'Library books index' do
     visit "/libraries/#{library2.id}/books"
 
     expect(page).to have_link("Create Book", :href=>"/libraries/#{library2.id}/books/new")
+  end
 
+  it 'has a link to sort alphabetically' do
+    library = Library.create!(name: "Ford-Warren", staff_count: 12, member_count: 1200, open: false)
+    book1 = library.books.create!(name: "Harry Potter and the Sorcerer's Stone", publish_year: 1998, available: true)
+    book2 = library.books.create!(name: "1Q84", publish_year: 2011, available: false)
+
+    visit "/libraries/#{library.id}/books"
+
+    expect(book1.name).to appear_before(book2.name)
+    expect(page).to have_link("Sort Books Alphabetically", :href=>"/libraries/#{library.id}/books/")
+
+    click_link("Sort Books Alphabetically")
+    expect(book2.name).to appear_before(book1.name)
   end
 
 end
