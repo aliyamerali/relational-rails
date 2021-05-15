@@ -72,9 +72,7 @@ RSpec.describe 'libraries show page', type: :feature do
 
   it 'has a link to delete the library' do
     visit "/libraries/#{@library1.id}"
-
     expect(page).to have_button("Delete Library")
-    #click_on will work for link OR button
 
     click_on("Delete Library")
     expect(page).to have_current_path("/libraries")
