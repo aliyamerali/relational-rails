@@ -30,10 +30,16 @@ RSpec.describe 'Bartenders show Page' do
 
   it "shows the count of the number of children associated with this parent" do
     within("#drink-count") do
-      save_and_open_page
       expect(@bartender1.drinks_count).to eq(2)
 
       expect(@bartender1.drinks_count).to_not eq(1)
     end
+  end
+
+  it "I see a link at the top of the page that takes me to the Child Index" do
+    expect(page).to have_link("Drinks Home Page", href: "/drinks")
+    expect(page).to have_link("Bartenders Home Page", href: "/bartenders")
+    expect(page).to have_link("Libraries Index", href: "/libraries")
+    expect(page).to have_link("Books Index", href: "/books")
   end
 end

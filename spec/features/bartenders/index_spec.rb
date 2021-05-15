@@ -28,4 +28,11 @@ RSpec.describe 'Bartenders Index Page' do
 And next to each of the bartenders I see when it was created" do
     expect(@bartender3.name).to appear_before(@bartender2.name)
   end
+
+  it "I see a link at the top of the page that takes me to the Child Index" do
+    expect(page).to have_link("Drinks Home Page", href: "/drinks")
+    expect(page).to have_link("Bartenders Home Page", href: "/bartenders")
+    expect(page).to have_link("Libraries Index", href: "/libraries")
+    expect(page).to have_link("Books Index", href: "/books")
+  end
 end
