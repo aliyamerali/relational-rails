@@ -1,8 +1,9 @@
 <h1>Libraries</h1>
 <% @libraries.each do |library| %>
-<li><%= library.name %> </li>
+<h4><%= library.name %> </h4>
   <ul>
     <li><em>record created at: <%= library.created_at %></em></li>
+    <li><em><a href="/libraries/<%=library.id%>/edit">Edit Library</a></em></li>
   </ul>
 <% end %>
 

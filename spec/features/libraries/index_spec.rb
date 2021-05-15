@@ -34,6 +34,12 @@ RSpec.describe 'libraries index page', type: :feature do
     expect(page).to have_link("Edit Library", :href=>"/libraries/#{@library3.id}/edit")
   end
 
+  it 'edit link redirects to library edit page' do
+    click_link("Edit Library", :match => :first)
+
+    expect(page).to have_current_path("/libraries/#{@library3.id}/edit")
+  end
+
   it 'has link to books and libraries indexes' do
     expect(page).to have_link("Books Index", :href=>"/books")
     expect(page).to have_link("Libraries Index", :href=>"/libraries")
