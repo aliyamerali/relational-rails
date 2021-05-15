@@ -33,4 +33,9 @@ RSpec.describe 'Bartender Drinks Index Page' do
     expect(page).to_not have_content(@drink3.cost)
     expect(page).to_not have_content(@drink3.abv)
   end
+
+  it "I see a link at the top of the page that takes me to the Child Index" do
+    expect(page).to have_link("Drinks Home Page", href: "/drinks")
+    expect(page).to have_link("Bartenders Home Page", href: "/bartenders")
+  end
 end
