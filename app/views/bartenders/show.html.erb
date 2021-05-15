@@ -10,3 +10,8 @@
 <section id="drink-count">
   <p>Count = <%= @bartender.drinks_count %></p>
 </section>
+
+
+<section>
+  <%= link_to "Drinks for this Bartender", "/bartenders/#{@bartender.id}/drinks" %>
+</section><br/>
