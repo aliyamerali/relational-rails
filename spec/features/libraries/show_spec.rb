@@ -14,7 +14,6 @@ RSpec.describe 'libraries show page', type: :feature do
     @book4 = @library2.books.create!(name: "The Vanishing Half", publish_year: 2020, available: false)
 
     @book6 = @library3.books.create!(name: "The Ocean at the End of the Lane", publish_year: 2013, available: false)
-
   end
 
   it 'shows the library and attributes with given id' do
@@ -47,6 +46,28 @@ RSpec.describe 'libraries show page', type: :feature do
 
     visit "/libraries/#{@library3.id}"
     expect(page).to have_content("Total Book Count: 1")
+  end
+
+  it 'has link to books and libraries indexes' do
+    visit "/libraries/#{@library1.id}"
+    expect(page).to have_link("Books Index", :href=>"/books")
+    expect(page).to have_link("Libraries Index", :href=>"/libraries")
+  end
+
+  it 'has link to the library\'s books page' do
+    visit "/libraries/#{@library1.id}"
+    expect(page).to have_link("Books at this Library", :href=>"/libraries/#{@library1.id}/books")
+
+    visit "/libraries/#{@library3.id}"
+    expect(page).to have_link("Books at this Library", :href=>"/libraries/#{@library3.id}/books")
+  end
+
+  it 'has link to update the library record' do
+    visit "/libraries/#{@library1.id}"
+    expect(page).to have_link("Update Library", :href=>"/libraries/#{@library1.id}/edit")
+
+    visit "/libraries/#{@library3.id}"
+    expect(page).to have_link("Update Library", :href=>"/libraries/#{@library3.id}/edit")
   end
 
 end

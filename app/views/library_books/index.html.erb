@@ -1,4 +1,5 @@
 <h3>All Books at <%= @library.name %> Library: </h3>
+<a href="/libraries/<%=@library.id%>/books?sort=alpha">Sort Books Alphabetically</a>
 <% @books.each do |book| %>
 <h5><%= book.name %></h5>
 <ul>
@@ -6,3 +7,4 @@
 <li>Currently Available: <%= book.available %></li>
 </ul>
 <% end %>
+<a href="/libraries/<%=@library.id%>/books/new">Create Book</a>
