@@ -36,4 +36,13 @@ RSpec.describe 'Book Show page', type: :feature do
     visit "/books/#{@book2.id}"
     expect(page).to have_link("Update Book", :href=>"/books/#{@book2.id}/edit")
   end
+
+  it 'has a link to delete the book' do
+    visit "/books/#{@book1.id}"
+    expect(page).to have_button("Delete Book")
+
+    click_on("Delete Book")
+    expect(page).to have_current_path("/books")
+    expect(page).to_not have_content("#{@book1.name}")
+  end
 end
