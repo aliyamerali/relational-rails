@@ -61,6 +61,6 @@ RSpec.describe 'books index page', type: :feature do
   it 'clicking on the book edit link brings user to the edit page for that book' do
     click_link("Edit Book", match: :first)
 
-    expect(page).to have_current_path("books/#{@book1.id}/edit")
+    expect(page).to have_current_path("/books/#{@book1.id}/edit")
   end
 end
