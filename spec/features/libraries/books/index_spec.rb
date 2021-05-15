@@ -76,4 +76,13 @@ RSpec.describe 'Library books index' do
     expect(page).to have_current_path("/books/#{@book1.id}/edit")
   end
 
+  it 'has a button to filter by books published after a given year' do
+    visit "/libraries/#{@library1.id}/books"
+    expect(page).to have_field('filter')
+
+    fill_in 'filter', with: '2000'
+    click_button 'Only return records with publish_year after `number`'
+    expect(page).to have_content('1Q84')
+    expect(page).to_not have_content('Harry Potter and the Sorcerer\'s Stone')
+  end
 end
