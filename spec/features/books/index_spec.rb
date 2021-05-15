@@ -51,4 +51,16 @@ RSpec.describe 'books index page', type: :feature do
     expect(page).to_not have_content(@book6.publish_year)
     expect(page).to_not have_content(@book6.available)
   end
+
+  it 'shows a link next to each book to edit the book' do
+    expect(page).to have_link("Edit Book", :href=>"books/#{@book1.id}/edit")
+    expect(page).to have_link("Edit Book", :href=>"books/#{@book3.id}/edit")
+    expect(page).to have_link("Edit Book", :href=>"books/#{@book5.id}/edit")
+  end
+
+  it 'clicking on the book edit link brings user to the edit page for that book' do
+    click_link("Edit Book", match: :first)
+
+    expect(page).to have_current_path("books/#{@book1.id}/edit")
+  end
 end
