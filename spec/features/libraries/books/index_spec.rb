@@ -57,16 +57,16 @@ RSpec.describe 'Library books index' do
 
   it 'has a link to edit book next to each book' do
     visit "/libraries/#{@library1.id}/books"
-    expect(page).to have_link("Edit Book", :href=>"books/#{@book1.id}/edit")
-    expect(page).to have_link("Edit Book", :href=>"books/#{@book2.id}/edit")
+    expect(page).to have_link("Edit Book", :href=>"/books/#{@book1.id}/edit")
+    expect(page).to have_link("Edit Book", :href=>"/books/#{@book2.id}/edit")
 
     visit "/libraries/#{@library2.id}/books"
-    expect(page).to have_link("Edit Book", :href=>"books/#{@book3.id}/edit")
-    expect(page).to have_link("Edit Book", :href=>"books/#{@book4.id}/edit")
+    expect(page).to have_link("Edit Book", :href=>"/books/#{@book3.id}/edit")
+    expect(page).to have_link("Edit Book", :href=>"/books/#{@book4.id}/edit")
 
     visit "/libraries/#{@library3.id}/books"
-    expect(page).to have_link("Edit Book", :href=>"books/#{@book5.id}/edit")
-    expect(page).to have_link("Edit Book", :href=>"books/#{@book6.id}/edit")
+    expect(page).to have_link("Edit Book", :href=>"/books/#{@book5.id}/edit")
+    expect(page).to have_link("Edit Book", :href=>"/books/#{@book6.id}/edit")
   end
 
   it 'clicking edit book link directs to the books edit page' do
