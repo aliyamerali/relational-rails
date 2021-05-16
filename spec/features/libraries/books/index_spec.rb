@@ -88,12 +88,12 @@ RSpec.describe 'Library books index' do
 
   it 'has a link to delete book next to every book' do
     visit "/libraries/#{@library1.id}/books"
-    expect(page).to have_link("Delete #{@book1.name}")
-    expect(page).to have_link("Delete #{@book2.name}")
+    expect(page).to have_link("Delete '#{@book1.name}'")
+    expect(page).to have_link("Delete '#{@book2.name}'")
 
-    click_link("Delete #{@book2.name}")
+    click_link("Delete '#{@book2.name}'")
     expect(page).to have_current_path('/books')
-    expect(page).to_not have_content(@book3.name)
+    expect(page).to_not have_content(@book2.name)
     expect(page).to have_content(@book1.name)
   end
 end

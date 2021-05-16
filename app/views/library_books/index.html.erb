@@ -12,6 +12,7 @@
     <li><em><a href="/books/<%=book.id%>/edit">Edit Book</a></em></li>
     <li>Year Published: <%= book.publish_year %></li>
     <li>Currently Available: <%= book.available %></li>
+    <li><em> <%= link_to "Delete '#{book.name}'", "/books/#{book.id}", method: :delete %> </em></li>
   </ul>
 <% end %>
 
