@@ -2,10 +2,13 @@ class LibraryBooksController < ApplicationController
 
   def index
     @library = Library.find(params[:id])
-    if params[:sort].nil?
+    if params[:filter].nil? && params[:sort].nil?
       @books = @library.books
-    else
+    elsif !params[:sort].nil?
       @books = @library.books.order(name: :asc)
+    elsif !params[:filter].nil?
+      min_year = params[:filter]
+      @books = @library.books.where("publish_year > #{min_year}")
     end
   end
 

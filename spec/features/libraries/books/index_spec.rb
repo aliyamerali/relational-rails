@@ -81,7 +81,7 @@ RSpec.describe 'Library books index' do
     expect(page).to have_field('filter')
 
     fill_in 'filter', with: '2000'
-    click_button 'Only return records with publish_year after `number`'
+    click_button 'Only return records with publish_year after this date'
     expect(page).to have_content('1Q84')
     expect(page).to_not have_content('Harry Potter and the Sorcerer\'s Stone')
   end
