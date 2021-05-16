@@ -1,6 +1,6 @@
 class LibraryBooksController < ApplicationController
 
-  def index
+  def index #TODO: How can both query strings persist in the url?
     @library = Library.find(params[:id])
     if params[:filter].nil? && params[:sort].nil?
       @books = @library.books

@@ -48,4 +48,17 @@ RSpec.describe 'libraries index page', type: :feature do
   it 'has a link to create a new library' do
     expect(page).to have_link("New Library", :href=>"/libraries/new")
   end
+
+  it 'has a link to delete each library' do
+    visit "/libraries/"
+    expect(page).to have_button("Delete #{@library1.name} Library")
+    expect(page).to have_button("Delete #{@library2.name} Library")
+    expect(page).to have_button("Delete #{@library3.name} Library")
+
+    click_on("Delete #{@library3.name} Library")
+    expect(page).to have_current_path("/libraries")
+    expect(page).to have_content("#{@library1.name}")
+    expect(page).to have_content("#{@library2.name}")
+    expect(page).to_not have_content("#{@library3.name}")
+  end
 end
