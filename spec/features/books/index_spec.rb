@@ -65,11 +65,11 @@ RSpec.describe 'books index page', type: :feature do
   end
 
   it 'has a link to delete book next to every book' do
-    expect(page).to have_link("Delete #{@book1.name}")
-    expect(page).to have_link("Delete #{@book3.name}")
-    expect(page).to have_link("Delete #{@book5.name}")
+    expect(page).to have_link("Delete '#{@book1.name}'")
+    expect(page).to have_link("Delete '#{@book3.name}'")
+    expect(page).to have_link("Delete '#{@book5.name}'")
 
-    click_link("Delete #{@book3.name}")
+    click_link("Delete '#{@book3.name}'")
     expect(page).to have_current_path('/books')
     expect(page).to_not have_content(@book3.name)
     expect(page).to have_content(@book1.name)
