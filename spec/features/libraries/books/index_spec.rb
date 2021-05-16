@@ -85,4 +85,15 @@ RSpec.describe 'Library books index' do
     expect(page).to have_content('1Q84')
     expect(page).to_not have_content('Harry Potter and the Sorcerer\'s Stone')
   end
+
+  it 'has a link to delete book next to every book' do
+    visit "/libraries/#{@library1.id}/books"
+    expect(page).to have_link("Delete #{@book1.name}")
+    expect(page).to have_link("Delete #{@book2.name}")
+
+    click_link("Delete #{@book2.name}")
+    expect(page).to have_current_path('/books')
+    expect(page).to_not have_content(@book3.name)
+    expect(page).to have_content(@book1.name)
+  end
 end
