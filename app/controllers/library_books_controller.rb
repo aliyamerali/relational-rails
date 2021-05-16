@@ -18,11 +18,12 @@ class LibraryBooksController < ApplicationController
 
   def create
     library = Library.find(params[:id])
-
-    library.books.create(name: params[:name],
-                publish_year: params[:publish_year],
-                available: params[:available])
-
+    library.books.create(library_book_params)
     redirect_to "/libraries/#{library[:id]}/books"
   end
+
+  private
+    def library_book_params
+      params.permit(:name, :publish_year, :available)
+    end
 end

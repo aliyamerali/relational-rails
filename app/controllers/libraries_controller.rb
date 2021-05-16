@@ -13,11 +13,7 @@ class LibrariesController < ApplicationController
   end
 
   def create
-    library = Library.create(name: params[:name],
-                            staff_count: params[:staff_count],
-                            member_count: params[:member_count],
-                            open: params[:open])
-
+    library = Library.create(library_params)
     redirect_to '/libraries'
   end
 
@@ -27,13 +23,7 @@ class LibrariesController < ApplicationController
 
   def update
     library = Library.find(params[:id])
-    library.update({
-      name: params[:name],
-      member_count: params[:member_count],
-      staff_count: params[:staff_count],
-      open: params[:open]
-      })
-
+    library.update(library_params)
     library.save
     redirect_to "/libraries/#{library.id}"
   end
@@ -41,7 +31,11 @@ class LibrariesController < ApplicationController
   def destroy
     library = Library.find(params[:id])
     library.destroy
-
     redirect_to '/libraries'
   end
+
+  private
+    def library_params
+      params.permit(:name, :member_count, :staff_count, :open)
+    end
 end
