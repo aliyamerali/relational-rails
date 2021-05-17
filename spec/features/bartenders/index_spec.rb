@@ -35,4 +35,8 @@ And next to each of the bartenders I see when it was created" do
     expect(page).to have_link("Libraries Index", href: "/libraries")
     expect(page).to have_link("Books Index", href: "/books")
   end
+
+  it "I see a link to create a new Bartender" do
+    expect(page).to have_link("New Bartender", href: "/bartenders/new")
+  end
 end
