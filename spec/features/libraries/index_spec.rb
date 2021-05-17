@@ -29,13 +29,13 @@ RSpec.describe 'libraries index page', type: :feature do
   end
 
   it 'has an edit link for each record' do
-    expect(page).to have_link("Edit Library", :href=>"/libraries/#{@library1.id}/edit")
-    expect(page).to have_link("Edit Library", :href=>"/libraries/#{@library2.id}/edit")
-    expect(page).to have_link("Edit Library", :href=>"/libraries/#{@library3.id}/edit")
+    expect(page).to have_link("Edit #{@library1.name} Library", :href=>"/libraries/#{@library1.id}/edit")
+    expect(page).to have_link("Edit #{@library2.name} Library", :href=>"/libraries/#{@library2.id}/edit")
+    expect(page).to have_link("Edit #{@library3.name} Library", :href=>"/libraries/#{@library3.id}/edit")
   end
 
   it 'edit link redirects to library edit page' do
-    click_link("Edit Library", :match => :first)
+    click_link("Edit #{@library3.name} Library", :match => :first)
 
     expect(page).to have_current_path("/libraries/#{@library3.id}/edit")
   end
@@ -47,5 +47,18 @@ RSpec.describe 'libraries index page', type: :feature do
 
   it 'has a link to create a new library' do
     expect(page).to have_link("New Library", :href=>"/libraries/new")
+  end
+
+  it 'has a link to delete each library' do
+    visit "/libraries/"
+    expect(page).to have_link("Delete #{@library1.name} Library")
+    expect(page).to have_link("Delete #{@library2.name} Library")
+    expect(page).to have_link("Delete #{@library3.name} Library")
+
+    click_on("Delete #{@library3.name} Library")
+    expect(page).to have_current_path("/libraries")
+    expect(page).to have_content("#{@library1.name}")
+    expect(page).to have_content("#{@library2.name}")
+    expect(page).to_not have_content("#{@library3.name}")
   end
 end

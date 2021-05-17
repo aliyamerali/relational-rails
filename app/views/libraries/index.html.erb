@@ -3,7 +3,8 @@
 <h4><%= library.name %> </h4>
   <ul>
     <li><em>record created at: <%= library.created_at %></em></li>
-    <li><em><a href="/libraries/<%=library.id%>/edit">Edit Library</a></em></li>
+    <li><em><a href="/libraries/<%=library.id%>/edit">Edit <%=library.name%> Library</a></em></li>
+    <li><em><%= link_to "Delete #{library.name} Library", "/libraries/#{library.id}", method: :delete %></em></li>
   </ul>
 <% end %>
 
