@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   get "/bartenders", to: 'bartenders#index'
+  get "/bartenders/new", to: 'bartenders#new'
   get "/bartenders/:id", to: 'bartenders#show'
+  post "/bartenders", to: 'bartenders#create'
+  get "/bartenders/:id/edit", to: 'bartenders#edit'
+  patch "/bartenders/:id", to: 'bartenders#update'
+  delete "/bartenders/:id", to: 'bartenders#destroy'
 
   get "/drinks", to: 'drinks#index'
   get "/drinks/:id", to: 'drinks#show'
