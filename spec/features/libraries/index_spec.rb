@@ -61,4 +61,21 @@ RSpec.describe 'libraries index page', type: :feature do
     expect(page).to have_content("#{@library2.name}")
     expect(page).to_not have_content("#{@library3.name}")
   end
+
+  it 'has a link to sort libraries by number of books' do
+    @book1 = @library1.books.create!(name: "Harry Potter and the Sorcerer's Stone", publish_year: 1998, available: true)
+
+    @book2 = @library2.books.create!(name: "1Q84", publish_year: 2011, available: false)
+    @book3 = @library2.books.create!(name: "On the Move: A Life", publish_year: 2015, available: true)
+
+    visit "/libraries/"
+    expect(page).to have_link("Sort by total number of books")
+
+    click_on("Sort by total number of books")
+    expect(@library2.name).to appear_before(@library1.name)
+    expect(@library1.name).to appear_before(@library3.name)
+    expect(page).to have_content("Book Count: 2")
+    expect(page).to have_content("Book Count: 1")
+    expect(page).to have_content("Book Count: 0")
+  end
 end
