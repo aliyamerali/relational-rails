@@ -1,9 +1,10 @@
 <h3> <%= @book.name %> </h3>
 <%= button_to "Delete Book", "/books/#{@book.id}" , method: :delete %>
+
 <ul>
   <li>Year Published: <%= @book.publish_year %></li>
   <li>Currently Available: <%= @book.available %></li>
   <li>Library: <%= @book.library.name %></li>
 </ul>
 
-<a href="/books/<%=@book.id%>/edit">Update Book</a>
+<%= link_to "Update Book", "/books/#{@book.id}/edit" %>
