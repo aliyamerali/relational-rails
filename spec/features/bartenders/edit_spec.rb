@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Bartenders New Page' do
+RSpec.describe 'Bartenders Edit Page' do
   before :each do
     @bartender1 = Bartender.create!(name: "Steve", age: 32, on_vacation: false, city: "Denver")
     @bartender2 = Bartender.create!(name: "Jill", age: 27, on_vacation: true, city: "Baltimore")
@@ -15,11 +15,11 @@ RSpec.describe 'Bartenders New Page' do
     @drink5 = @bartender3.drinks.create!(name: "Hurricane", cost: 6.00, abv: 5, popular: false)
     @drink6 = @bartender3.drinks.create!(name: "Gin and Tonic", cost: 7.00, abv: 9, popular: true)
 
-    visit '/bartenders/new'
+    visit "/bartenders/#{@bartender1.id}/edit"
   end
 
-  it 'I can create a new bartender' do
-    expect(current_path).to eq("/bartenders/new")
+  it 'I can update a bartender' do
+    expect(current_path).to eq("/bartenders/#{@bartender1.id}/edit")
 
     expect(page).to have_field("Name")
     expect(page).to have_field("Age")
@@ -33,13 +33,10 @@ RSpec.describe 'Bartenders New Page' do
 
     check 'On vacation'
 
-    click_on "Create Bartender"
+    click_on "Update Bartender"
 
-    expect(current_path).to eq("/bartenders")
+    expect(current_path).to eq("/bartenders/#{@bartender1.id}")
 
     expect(page).to have_content("Charles")
-    # can't test other attributes since US-1 only allows for names
-    # can check params though
-    # ask about this during check in
   end
 end
