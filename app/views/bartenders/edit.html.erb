@@ -1,0 +1,17 @@
+<h3>Edit This Bartender</h3>
+
+<%= form_with url: "/bartenders/#{@bartender.id}", method: :patch, local: true do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name, value: @bartender.name %><br/><br/>
+
+<%= f.label :age %>
+<%= f.number_field :age, value: @bartender.age %><br/><br/>
+
+<%= f.label :on_vacation %>
+<%= f.check_box :on_vacation, value: @bartender.on_vacation %><br/><br/>
+
+<%= f.label :city %>
+<%= f.text_field :city, value: @bartender.city %><br/><br/>
+
+<%= f.submit 'Update Bartender' %>
+<% end %>
