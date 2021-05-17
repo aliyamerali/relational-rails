@@ -12,9 +12,21 @@ class BartendersController < ApplicationController
 
   def create
     bartender = Bartender.new(bartender_params)
-    
+
     bartender.save
     redirect_to '/bartenders'
+  end
+
+  def edit
+    @bartender = Bartender.find(params[:id])
+  end
+
+  def update
+    bartender = Bartender.find(params[:id])
+    bartender.update(bartender_params)
+
+    bartender.save
+    redirect_to "/bartenders/#{bartender.id}"
   end
 
   private

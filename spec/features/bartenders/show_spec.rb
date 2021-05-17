@@ -46,4 +46,8 @@ RSpec.describe 'Bartenders show Page' do
   it "I see a link to take me to that parent's `child_table_name` page" do
     expect(page).to have_link('Drinks for this Bartender', href: "/bartenders/#{@bartender1.id}/drinks")
   end
+
+  it "I see a link to create a new Bartender" do
+    expect(page).to have_link("Update Bartender", href: "/bartenders/#{@bartender1.id}/edit")
+  end
 end
