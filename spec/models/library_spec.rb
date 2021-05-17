@@ -17,7 +17,6 @@ describe Library, type: :model do
   end
 
   describe 'instance methods' do
-
     it '#book_count returns total count of books per library' do
       expect(@library1.book_count).to eq(1)
       expect(@library2.book_count).to eq(2)
