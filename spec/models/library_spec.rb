@@ -30,5 +30,11 @@ describe Library, type: :model do
 
       expect(Library.sort_by_book_count).to eq(expected)
     end
+
+    it '#sort_by_created_at returns list of libraries sorted by most recently created' do
+      expected = [@library1, @library2, @library3]
+
+      expect(Library.sort_by_created_at.to_a).to eq(expected)
+    end
   end
 end

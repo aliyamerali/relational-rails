@@ -4,7 +4,7 @@ class LibrariesController < ApplicationController
     if params[:sort] == "book_count"
       @libraries = Library.sort_by_book_count
     else
-      @libraries = Library.order(created_at: :desc)
+      @libraries = Library.sort_by_created_at
     end
   end
 

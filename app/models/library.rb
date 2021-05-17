@@ -11,4 +11,8 @@ class Library < ApplicationRecord
       library.book_count
     end.reverse
   end
+
+  def self.sort_by_created_at
+    Library.order(created_at: :desc)
+  end
 end
