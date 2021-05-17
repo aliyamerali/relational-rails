@@ -1,7 +1,11 @@
 class LibrariesController < ApplicationController
 
   def index
-    @libraries = Library.order(created_at: :desc)
+    if params[:sort] == "book_count"
+      @libraries = Library.sort_by_book_count
+    else
+      @libraries = Library.order(created_at: :desc)
+    end
   end
 
   def show
