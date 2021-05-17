@@ -22,6 +22,10 @@ describe Library, type: :model do
       expect(@library2.book_count).to eq(2)
       expect(@library3.book_count).to eq(0)
     end
+
+    it '#sort_by_name orders books by name' do
+      expect(@library2.sort_books_by_name.to_a).to eq([@book2, @book3])
+    end
   end
 
   describe 'class methods' do
