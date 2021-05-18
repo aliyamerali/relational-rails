@@ -40,4 +40,19 @@ RSpec.describe 'Drink Show Page' do
   it "I see a link to update this drink" do
     expect(page).to have_link("Update Drink", href: "/drinks/#{@drink1.id}/edit")
   end
+
+  it "I see a link to delete the Bartender" do
+    expect(page).to have_link("Delete Drink", href: "/drinks/#{@drink1.id}")
+  end
+
+  it "I can delete this bartender" do
+    expect(current_path).to eq("/drinks/#{@drink1.id}")
+
+    click_link "Delete Drink"
+
+    expect(current_path).to eq("/drinks")
+    expect(page).to_not have_content(@drink1.name)
+    expect(page).to_not have_content(@drink1.cost)
+    expect(page).to_not have_content(@drink1.abv)
+  end
 end
