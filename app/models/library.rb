@@ -15,4 +15,8 @@ class Library < ApplicationRecord
   def self.sort_by_created_at
     Library.order(created_at: :desc)
   end
+
+  def sort_books_by_name
+    self.books.order(name: :asc)
+  end
 end

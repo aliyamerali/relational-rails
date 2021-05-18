@@ -1,5 +1,7 @@
 <h3>All Books at <%= @library.name %> Library: </h3>
-<a href="/libraries/<%=@library.id%>/books?sort=alpha">Sort Books Alphabetically</a>
+
+<%= link_to "Sort Books Alphabetically", "/libraries/#{@library.id}/books?sort=alpha" %>
+
 <%= form_with url: "/libraries/#{@library.id}/books?pub_after=#{:filter}", method: :get, local: true do |form| %>
   <%= form.label "Publication Year:"  %>
   <%= form.number_field :filter  %>
@@ -9,11 +11,11 @@
 <% @books.each do |book| %>
   <h5><%= book.name %></h5>
   <ul>
-    <li><em><a href="/books/<%=book.id%>/edit">Edit Book</a></em></li>
+    <li><em> <%= link_to "Edit Book", "/books/#{book.id}/edit" %> </em></li>
     <li>Year Published: <%= book.publish_year %></li>
     <li>Currently Available: <%= book.available %></li>
     <li><em> <%= link_to "Delete '#{book.name}'", "/books/#{book.id}", method: :delete %> </em></li>
   </ul>
 <% end %>
 
-<a href="/libraries/<%=@library.id%>/books/new">Create Book</a>
+<%= link_to "Create Book", "/libraries/#{@library.id}/books/new" %>

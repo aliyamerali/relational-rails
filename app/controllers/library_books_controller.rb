@@ -5,7 +5,7 @@ class LibraryBooksController < ApplicationController
     if params[:filter].nil? && params[:sort].nil?
       @books = @library.books
     elsif !params[:sort].nil?
-      @books = @library.books.order(name: :asc)
+      @books = @library.sort_books_by_name
     elsif !params[:filter].nil?
       min_year = params[:filter]
       @books = @library.books.where("publish_year > #{min_year}")
