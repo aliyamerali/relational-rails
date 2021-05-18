@@ -79,11 +79,11 @@ RSpec.describe 'books index page', type: :feature do
   it 'has a form to search for an exact match keyword' do
     expect(page).to have_field(:search)
 
-    fill_in :search, with: "Harry Potter"
+    fill_in :search, with: "On the Move: A Life"
     click_button "Search"
 
-    expect(page).to have_content("Harry Potter and the Sorcerer's Stone")
-    expect(page).to_not have_content("1Q84")
+    expect(page).to have_content("On the Move: A Life")
+    expect(page).to_not have_content("Harry Potter and the Sorcerer's Stone")
     expect(page).to_not have_content("I'm Just A Person")
     expect(page).to_not have_content("The Vanishing Half")
   end
