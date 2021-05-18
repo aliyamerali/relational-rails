@@ -44,5 +44,9 @@ describe Library, type: :model do
     it '#filter_by_search_exact returns only libraries with exact matches to search' do
       expect(Library.filter_by_search_exact("Denver Central")).to eq([@library1])
     end
+
+    it '#filter_by_search_partial returns only libraries with partial matches to search' do
+      expect(Library.filter_by_search_partial("en")).to eq([@library1, @library2])
+    end
   end
 end
