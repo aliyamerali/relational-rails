@@ -2,7 +2,9 @@ class BooksController < ApplicationController
 
   def index
     if params[:search]
-      @books = Book.filter_available_by_search(params[:search])
+      @books = Book.filter_available_by_search_exact(params[:search])
+    elsif params[:search_partial]
+      @books = Book.filter_available_by_search_partial(params[:search_partial])
     else
       @books = Book.where(available: true)
     end

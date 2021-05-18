@@ -28,7 +28,11 @@ class Library < ApplicationRecord
     self.books.where("publish_year > #{min_year}")
   end
 
-  def self.filter_by_search(query)
+  def self.filter_by_search_exact(query)
     self.where("name LIKE '#{query}'")
+  end
+
+  def self.filter_by_search_partial(query)
+    self.where("name LIKE '%#{query}%'")
   end
 end

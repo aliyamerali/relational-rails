@@ -80,11 +80,22 @@ RSpec.describe 'books index page', type: :feature do
     expect(page).to have_field(:search)
 
     fill_in :search, with: "On the Move: A Life"
-    click_button "Search"
+    click_button "Search for Exact Match"
 
     expect(page).to have_content("On the Move: A Life")
     expect(page).to_not have_content("Harry Potter and the Sorcerer's Stone")
     expect(page).to_not have_content("I'm Just A Person")
     expect(page).to_not have_content("The Vanishing Half")
+  end
+
+  it 'has a form to search for a partial match keyword' do
+    expect(page).to have_field(:search_partial)
+
+    fill_in :search_partial, with: "A"
+    click_button "Search for Partial Match"
+
+    expect(page).to have_content("On the Move: A Life")
+    expect(page).to have_content("I'm Just A Person")
+    expect(page).to_not have_content("Harry Potter and the Sorcerer's Stone")
   end
 end

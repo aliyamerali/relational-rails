@@ -83,7 +83,18 @@ RSpec.describe 'libraries index page', type: :feature do
     expect(page).to have_field(:search)
 
     fill_in :search, with: "Park Hill"
-    click_button "Search"
+    click_button "Search for Exact Match"
+
+    expect(page).to have_content("Park Hill")
+    expect(page).to_not have_content("Denver Central")
+    expect(page).to_not have_content("Ford-Warren")
+  end
+
+  it 'has a form to search for an partial match keyword' do
+    expect(page).to have_field(:search_partial)
+
+    fill_in :search_partial, with: "Park"
+    click_button "Search for Partial Match"
 
     expect(page).to have_content("Park Hill")
     expect(page).to_not have_content("Denver Central")

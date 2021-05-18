@@ -6,7 +6,14 @@
 <%= form_with url:"/libraries?search=#{:search}", method: :get, local: true do |f| %>
   <%= f.hidden_field :sort, value: params[:sort] %>
   <%= f.text_field :search %>
-  <%= f.submit "Search" %>
+  <%= f.submit "Search for Exact Match" %>
+<% end %>
+<br>
+
+<%= form_with url:"/libraries?search_partial=#{:search}", method: :get, local: true do |f| %>
+  <%= f.hidden_field :sort, value: params[:sort] %>
+  <%= f.text_field :search_partial %>
+  <%= f.submit "Search for Partial Match" %>
 <% end %>
 
 
