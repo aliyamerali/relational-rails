@@ -48,4 +48,18 @@ RSpec.describe 'Bartender Drinks Index Page' do
   it "I see a link to sort drinks alphabetically" do
     expect(page).to have_link("Sort Drinks", href: "/bartenders/#{@bartender1.id}/drinks?sort=alphabetical")
   end
+
+  it "I see an edit link next to each drink" do
+    expect(page).to have_link("Edit", href: "/drinks/#{@drink1.id}/edit")
+  end
+
+  it "When I click the edit button next to each drink it takes me to the edit page" do
+    expect(current_path).to eq("/bartenders/#{@bartender1.id}/drinks")
+
+    within("#bartender-drink-#{@drink1.id}") do
+      click_link "Edit"
+    end
+
+    expect(current_path).to eq("/drinks/#{@drink1.id}/edit")
+  end
 end

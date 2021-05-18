@@ -54,4 +54,18 @@ RSpec.describe 'Drinks Index Page' do
     expect(page).to have_link("Libraries Index", href: "/libraries")
     expect(page).to have_link("Books Index", href: "/books")
   end
+
+  it "I see an edit link next to each drink" do
+    expect(page).to have_link("Edit", href: "/drinks/#{@drink1.id}/edit")
+  end
+
+  it "When I click the edit button next to each drink it takes me to the edit page" do
+    expect(current_path).to eq("/drinks")
+
+    within("#drink-#{@drink1.id}") do
+      click_link "Edit"
+    end
+
+    expect(current_path).to eq("/drinks/#{@drink1.id}/edit")
+  end
 end
