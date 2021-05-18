@@ -1,4 +1,10 @@
 <h3>All Books</h3>
+
+<%= form_with url:"/books?search=#{:search}", method: :get, local: true do |f| %>
+  <%= f.text_field :search %>
+  <%= f.submit "Search" %>
+<% end %>
+
 <% @books.each do |book| %>
 <h5><%= book.name %></h5>
 <ul>

@@ -4,4 +4,8 @@ class Book < ApplicationRecord
   def self.sort_by_name
     order(name: :asc)
   end
+
+  def self.filter_available_by_search(query)
+    self.where("available = true AND name LIKE '#{query}'")
+  end
 end
