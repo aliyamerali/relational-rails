@@ -5,6 +5,10 @@ class Bartender < ApplicationRecord
     order(created_at: :desc)
   end
 
+  def abv_filter(number)
+    drinks.where('abv > ?', number)
+  end
+
   def drinks_count
     drinks.count
   end
