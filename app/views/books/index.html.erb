@@ -4,6 +4,11 @@
   <%= f.text_field :search %>
   <%= f.submit "Search for Exact Match" %>
 <% end %>
+<br>
+<%= form_with url:"/books?search_partial=#{:search_partial}", method: :get, local: true do |f| %>
+  <%= f.text_field :search_partial %>
+  <%= f.submit "Search for Partial Match" %>
+<% end %>
 
 <% @books.each do |book| %>
 <h5><%= book.name %></h5>
