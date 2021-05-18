@@ -3,7 +3,7 @@
 <% @bartenders.each do |bartender| %>
   <section id="bartender-<%= bartender.id %>">
     <ul>
-      <li><%= bartender.name %> - started working on: <%= bartender.created_at %></li><br/>
+      <li><%= bartender.name %> - started working on: <%= bartender.created_at %> <%= link_to "Edit", "/bartenders/#{bartender.id}/edit" %></li><br/>
     </ul>
   </section>
 <% end %>
