@@ -1,15 +1,17 @@
 <h1>Libraries</h1>
+
 <%= link_to "Sort by total number of books", "/libraries?sort=book_count" %>
+
 <% @libraries.each do |library| %>
-<h4><%= library.name %> </h4>
-  <ul>
-    <% if params[:sort] == "book_count" %>
-      <li>Book Count: <%= library.book_count %></li>
-    <% end %>
-    <li><em>record created at: <%= library.created_at %></em></li>
-    <li><em><a href="/libraries/<%=library.id%>/edit">Edit <%=library.name%> Library</a></em></li>
-    <li><em><%= link_to "Delete #{library.name} Library", "/libraries/#{library.id}", method: :delete %></em></li>
-  </ul>
+  <h4><%= library.name %> </h4>
+    <ul>
+      <% if params[:sort] == "book_count" %>
+        <li>Book Count: <%= library.book_count %></li>
+      <% end %>
+      <li><em>record created at: <%= library.created_at %></em></li>
+      <li><em><a href="/libraries/<%=library.id%>/edit">Edit <%=library.name%> Library</a></em></li>
+      <li><em><%= link_to "Delete #{library.name} Library", "/libraries/#{library.id}", method: :delete %></em></li>
+    </ul>
 <% end %>
 
-<a href="/libraries/new">New Library</a>
+<%= link_to "New Library", "/libraries/new" %>
