@@ -36,7 +36,21 @@ And next to each of the bartenders I see when it was created" do
     expect(page).to have_link("Books Index", href: "/books")
   end
 
-  it "I see a link to create a new Bartender" do
+  it "I see a link to create a new bartender" do
     expect(page).to have_link("New Bartender", href: "/bartenders/new")
+  end
+
+  it "Next to every bartender, I see a link to edit that bartenders info" do
+    expect(page).to have_link("Edit", href: "/bartenders/#{@bartender1.id}/edit")
+  end
+
+  it "When I click the edit button next to each bartender it takes me to the edit page" do
+    expect(current_path).to eq("/bartenders")
+
+    within("#bartender-#{@bartender1.id}") do
+      click_link "Edit"
+    end
+
+    expect(current_path).to eq("/bartenders/#{@bartender1.id}/edit")
   end
 end
