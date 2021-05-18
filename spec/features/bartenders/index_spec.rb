@@ -53,4 +53,20 @@ And next to each of the bartenders I see when it was created" do
 
     expect(current_path).to eq("/bartenders/#{@bartender1.id}/edit")
   end
+
+  it "I see a link to delete each bartender" do
+    expect(page).to have_link("Delete Bartender", href: "/bartenders/#{@bartender1.id}")
+  end
+
+  it "I can delete a bartender from the index page" do
+    expect(current_path).to eq("/bartenders")
+    expect(page).to have_content(@bartender1.name)
+
+    within("#bartender-#{@bartender1.id}") do
+      click_link "Delete Bartender"
+    end
+
+    expect(current_path).to eq("/bartenders")
+    expect(page).to_not have_content(@bartender1.name)
+  end
 end
