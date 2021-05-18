@@ -32,7 +32,7 @@ describe Book, type: :model do
       @book4 = @library1.books.create!(name: "On the Move: A Life", publish_year: 2015, available: true)
       @book5 = @library1.books.create!(name: "On the Move: A Life", publish_year: 1955, available: true)
 
-      expect(Book.filter_available_by_search_exact("Life")).to eq([@book3, @book4, @book5])
+      expect(Book.filter_available_by_search_partial("Life")).to eq([@book3, @book4, @book5])
     end
   end
 end
