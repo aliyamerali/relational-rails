@@ -22,7 +22,10 @@ describe Book, type: :model do
     end
 
     it '#filter_available_by_search returns available books matching keyword exactly' do
-      expect(Book.filter_available_by_search("On the Move: A Life")).to eq([@book3])
+      @book4 = @library1.books.create!(name: "On the Move: A Life", publish_year: 2015, available: true)
+      @book5 = @library1.books.create!(name: "On the Move: A Life", publish_year: 1955, available: true)
+
+      expect(Book.filter_available_by_search("On the Move: A Life")).to eq([@book3, @book4, @book5])
     end
   end
 end
