@@ -4,4 +4,6 @@
 <li>ABV : <%= @drink.abv %></li><br/>
 <li>Popular? <%= @drink.popular %></li><br/>
 
-<%= link_to "Update Drink", "/drinks/#{@drink.id}/edit" %>
+<%= link_to "Update Drink", "/drinks/#{@drink.id}/edit" %><br/><br/>
+
+<%= link_to "Delete Drink", "/drinks/#{@drink.id}", method: :delete %><br/><br/>
