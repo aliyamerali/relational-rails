@@ -78,4 +78,15 @@ RSpec.describe 'libraries index page', type: :feature do
     expect(page).to have_content("Book Count: 1")
     expect(page).to have_content("Book Count: 0")
   end
+
+  it 'has a form to search for an exact match keyword' do
+    expect(page).to have_field("Search")
+
+    fill_in "Search", with: "Park Hill"
+    click_button "Search"
+
+    expect(page).to have_content("Park Hill")
+    expect(page).to_not have_content("Denver Central")
+    expect(page).to_not have_content("Ford-Warren")
+  end
 end
