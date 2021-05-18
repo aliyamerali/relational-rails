@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 
   # parent child
   get "/bartenders/:id/drinks", to: 'bartender_drinks#index'
+  get "/bartenders/:id/drinks/new", to: 'bartender_drinks#new'
+  post "/bartenders/:id/drinks", to: 'bartender_drinks#create'
 
   get "/libraries/:id/books", to: 'library_books#index'
   get "/libraries/:id/books/new", to:'library_books#new'
