@@ -80,9 +80,9 @@ RSpec.describe 'libraries index page', type: :feature do
   end
 
   it 'has a form to search for an exact match keyword' do
-    expect(page).to have_field("Search")
+    expect(page).to have_field(:search)
 
-    fill_in "Search", with: "Park Hill"
+    fill_in :search, with: "Park Hill"
     click_button "Search"
 
     expect(page).to have_content("Park Hill")

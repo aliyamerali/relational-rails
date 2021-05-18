@@ -1,5 +1,11 @@
 <h1>Libraries</h1>
 
+<%= form_with url:"/libraries?search=#{:search}", method: :get, local: true do |f| %>
+  <%= f.text_field :search %>
+  <%= f.submit "Search" %>
+<% end %>
+
+<br><br>
 <%= link_to "Sort by total number of books", "/libraries?sort=book_count" %>
 
 <% @libraries.each do |library| %>
