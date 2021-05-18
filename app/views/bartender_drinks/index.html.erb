@@ -1,11 +1,13 @@
 <h3><%= @bartender.name %>'s Drinks</h3><br/>
 
 <% @drinks.each do |drink| %>
-  <li>Name : <%= drink.name %></li><br/>
+<section id="bartender-drink-<%= drink.id %>">
+  <li>Name : <%= drink.name %> <%= link_to "Edit", "/drinks/#{drink.id}/edit" %></li><br/>
   <li>Cost : $ <%= drink.cost %></li><br/>
   <li>ABV : <%= drink.abv %></li><br/>
   <li>Popular ? <%= drink.popular %></li><br/>
   <p>--------------------------------</p>
+</section>
 <% end %><br/><br/>
 
 <%= link_to "Create Drink", "/bartenders/#{@bartender.id}/drinks/new" %>
