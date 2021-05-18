@@ -44,4 +44,8 @@ RSpec.describe 'Bartender Drinks Index Page' do
   it "I see a link to add a new drink for this bartender" do
     expect(page).to have_link("Create Drink", href: "/bartenders/#{@bartender1.id}/drinks/new")
   end
+
+  it "I see a link to sort drinks alphabetically" do
+    expect(page).to have_link("Sort Drinks", href: "/bartenders/#{@bartender1.id}/drinks?sort=alphabetical")
+  end
 end

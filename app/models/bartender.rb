@@ -8,4 +8,8 @@ class Bartender < ApplicationRecord
   def drinks_count
     drinks.count
   end
+
+  def alphabetical_order
+    drinks.order(:name)
+  end
 end

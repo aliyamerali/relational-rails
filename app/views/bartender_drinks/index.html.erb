@@ -9,3 +9,5 @@
 <% end %><br/><br/>
 
 <%= link_to "Create Drink", "/bartenders/#{@bartender.id}/drinks/new" %>
+
+<%= link_to "Sort Drinks", "/bartenders/#{@bartender.id}/drinks?sort=alphabetical" %>
