@@ -10,6 +10,11 @@
 </section>
 <% end %><br/><br/>
 
+<%= form_with url: "/bartenders/#{@bartender.id}/drinks", method: :get, local: true do |f| %>
+  <%= f.number_field :filter %>
+  <%= f.submit "Only return records with more than number submitted of abv" %>
+<% end %><br/><br/>
+
 <%= link_to "Create Drink", "/bartenders/#{@bartender.id}/drinks/new" %>
 
 <%= link_to "Sort Drinks", "/bartenders/#{@bartender.id}/drinks?sort=alphabetical" %>
