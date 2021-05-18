@@ -1,14 +1,18 @@
 <h1>Create a New Book</h1>
 
-<form action="/libraries/<%=@library.id%>/books" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<%= form_with url: "/libraries/#{@library.id}/books", method: :post, local: true do |f| %>
+  <%= f.label :name, "Book Name: " %>
+  <%= f.text_field :name %>
 
-  <label for="name">Book Name: </label>
-  <input type='text' name='name'/><br>
-  <label for="publish_year">Year Published: </label>
-  <input type='number' name='publish_year'/><br>
-  <label for="available">Is this book currently available?</label>
-    <p><input type="radio" name="available" value=true checked>Yes</input>
-       <input type="radio" name="available" value=false >No</input></p>
-  <input type='submit' name='submit' value = 'Create Book'>
-</form>
+  <%= f.label :publish_year, "Year Published: " %>
+  <%= f.text_field :publish_year %>
+
+  <%= f.label :available, "Is this book currently available?" %>
+    <%= label_tag :available_yes, "Yes" %>
+    <%= radio_button_tag :available, true %>
+    <%= label_tag :available_no, "No" %>
+    <%= radio_button_tag :available, false %>
+
+  <%= f.submit "Create Book"  %>
+
+<% end %>

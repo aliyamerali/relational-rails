@@ -10,17 +10,17 @@
   <% if @book.available %>
     <%= f.label :available, "Is this book available?" %><br>
     <%= radio_button_tag :available, true, true %>
-    <%= label_tag :radio_yes, "Yes" %>
+    <%= label_tag :available_yes, "Yes" %>
     <%= radio_button_tag :available, false, false %>
-    <%= label_tag :radio_yes, "No" %>
+    <%= label_tag :available_no, "No" %>
   <% else %>
     <%= f.label :available, "Is this book available?" %><br>
     <%= radio_button_tag :available, true, false %>
-    <%= label_tag :radio_yes, "Yes" %>
+    <%= label_tag :available_yes, "Yes" %>
     <%= radio_button_tag :available, false, true %>
-    <%= label_tag :radio_yes, "No" %>
+    <%= label_tag :available_no, "No" %>
   <% end %>
   <br> <br>
   <%= f.submit "Update Book" %>
-  
+
 <% end %>

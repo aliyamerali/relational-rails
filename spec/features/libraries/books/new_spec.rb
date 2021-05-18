@@ -16,7 +16,7 @@ RSpec.describe 'add a new book to a given library' do
     fill_in 'name', with: 'Brave New Work'
     fill_in 'publish_year', with: '2019'
     choose('available', {option: true})
-    click_button 'submit'
+    click_button 'Create Book'
 
     expect(page).to have_current_path("/libraries/#{@library.id}/books")
     expect(page).to have_content("Brave New Work")
@@ -30,7 +30,7 @@ RSpec.describe 'add a new book to a given library' do
     fill_in 'name', with: 'Brave New Work'
     fill_in 'publish_year', with: '2019'
     choose('available', {option: true})
-    click_button 'submit'
+    click_button 'Create Book'
 
     visit "/books"
     expect(page).to have_content("Brave New Work")
