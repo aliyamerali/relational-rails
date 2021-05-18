@@ -2,13 +2,15 @@ class LibraryBooksController < ApplicationController
 
   def index #TODO: How can both query strings persist in the url?
     @library = Library.find(params[:id])
-    if params[:filter].nil? && params[:sort].nil?
+
+    if params[:filter]
+      @books = @library.filter_books_by_published_year(params[:filter])
+    else
       @books = @library.books
-    elsif !params[:sort].nil?
-      @books = @library.sort_books_by_name
-    elsif !params[:filter].nil?
-      min_year = params[:filter]
-      @books = @library.books.where("publish_year > #{min_year}")
+    end
+
+    if params[:sort]
+      @books = @library.sort_books_by_name(@books)
     end
   end
 

@@ -16,8 +16,8 @@ class Library < ApplicationRecord
     Library.order(created_at: :desc)
   end
 
-  def sort_books_by_name
-    self.books.order(name: :asc)
+  def sort_books_by_name(books)
+    books.order(name: :asc)
   end
 
   def filter_books_by_published_year(min_year)
