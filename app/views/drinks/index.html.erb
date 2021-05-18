@@ -2,7 +2,7 @@
 
 <% @drinks.each do |drink| %>
   <section id="drink-<%= drink.id %>">
-    <li>Name : <%= drink.name %> <%= link_to "Edit", "/drinks/#{drink.id}/edit" %></li><br/>
+    <li>Name : <%= drink.name %> <%= link_to "Edit", "/drinks/#{drink.id}/edit" %> <%= link_to "Delete", "/drinks/#{drink.id}", method: :delete %></li><br/>
     <li>Cost : $<%= drink.cost %></li><br/>
     <li>ABV : <%= drink.abv %></li><br/>
     <li>Popular? <%= drink.popular %></li><br/>

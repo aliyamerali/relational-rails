@@ -68,4 +68,20 @@ RSpec.describe 'Drinks Index Page' do
 
     expect(current_path).to eq("/drinks/#{@drink1.id}/edit")
   end
+
+  it "I see an delete link next to each drink" do
+    expect(page).to have_link("Delete", href: "/drinks/#{@drink1.id}")
+  end
+
+  it "When I click the edit button next to each drink it takes me to the edit page" do
+    expect(current_path).to eq("/drinks")
+    expect(page).to have_content(@drink1.name)
+
+    within("#drink-#{@drink1.id}") do
+      click_link "Delete"
+    end
+
+    expect(current_path).to eq("/drinks")
+    expect(page).to_not have_content(@drink1.name)
+  end
 end
