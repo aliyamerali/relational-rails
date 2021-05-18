@@ -16,7 +16,7 @@ RSpec.describe 'library edit form', type: :feature do
 
   it 'creates a patch request with information entered to form' do
     fill_in 'name', with: 'Cherry Creek'
-    click_button 'submit'
+    click_button 'Update Library'
 
     expect(page).to have_current_path("/libraries/#{@library.id}")
     expect(page).to have_content('Cherry Creek')
