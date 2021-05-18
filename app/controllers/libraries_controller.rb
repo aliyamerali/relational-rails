@@ -1,7 +1,9 @@
 class LibrariesController < ApplicationController
 
   def index
-    if params[:sort] == "book_count"
+    if !params[:search].nil?
+      @libraries = Library.where("name LIKE '#{params[:search]}'")
+    elsif params[:sort] == "book_count"
       @libraries = Library.sort_by_book_count
     else
       @libraries = Library.sort_by_created_at
