@@ -3,18 +3,18 @@
 <%= form_with url: "/libraries", method: :post, local: true do |f| %>
   <%= f.label :name, "Library Name: " %>
   <%= f.text_field :name %>
-
+  <br>
   <%= f.label :staff_count, "Library Staff Count: " %>
   <%= f.number_field :staff_count %>
-
+  <br>
   <%= f.label :member_count, "Library Member Count: " %>
   <%= f.number_field :member_count %>
-
+  <br>
   <%= f.label :open, "Is this library open?" %>
     <%= radio_button_tag :open, true %>
     <%= label_tag :open_yes, "Yes" %>
     <%= radio_button_tag :open, false %>
     <%= label_tag :open_no, "No" %>
-
+  <br><br>
   <%= f.submit "Create Library" %>
 <% end %>
