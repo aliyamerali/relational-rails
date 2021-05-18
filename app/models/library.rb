@@ -19,4 +19,8 @@ class Library < ApplicationRecord
   def sort_books_by_name
     self.books.order(name: :asc)
   end
+
+  def filter_books_by_published_year(min_year)
+    self.books.where("publish_year > #{min_year}")
+  end
 end
