@@ -83,7 +83,7 @@ RSpec.describe 'libraries index page', type: :feature do
     expect(page).to have_field(:search)
 
     fill_in :search, with: "Park Hill"
-    click_button "Search"
+    click_button "Search for Exact Match"
 
     expect(page).to have_content("Park Hill")
     expect(page).to_not have_content("Denver Central")

@@ -80,7 +80,7 @@ RSpec.describe 'books index page', type: :feature do
     expect(page).to have_field(:search)
 
     fill_in :search, with: "On the Move: A Life"
-    click_button "Search"
+    click_button "Search for Exact Match"
 
     expect(page).to have_content("On the Move: A Life")
     expect(page).to_not have_content("Harry Potter and the Sorcerer's Stone")
