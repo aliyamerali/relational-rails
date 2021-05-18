@@ -42,5 +42,13 @@ RSpec.describe Bartender, type: :model do
         expect(@bartender1.alphabetical_order).to eq([@drink2, @drink7, @drink1])
       end
     end
+
+    describe '#abv_filter' do
+      it "shows only the records that are above the abv input by the user" do
+        expect(@bartender1.abv_filter(10)).to eq([@drink1, @drink2])
+
+        expect(@bartender1.abv_filter(10)).to_not eq([@drink7])
+      end
+    end
   end
 end
