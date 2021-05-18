@@ -2,7 +2,7 @@ class LibrariesController < ApplicationController
 
   def index
     if !params[:search].nil?
-      @libraries = Library.where("name LIKE '#{params[:search]}'")
+      @libraries = Library.filter_by_search(params[:search])
     elsif params[:sort] == "book_count"
       @libraries = Library.sort_by_book_count
     else

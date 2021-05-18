@@ -42,7 +42,7 @@ describe Library, type: :model do
     end
 
     it '#filter_by_search returns only libraries with exact matches to search' do
-      expect(Library.filter_by_search("Denver Central")).to eq(@library1)
+      expect(Library.filter_by_search("Denver Central")).to eq([@library1])
     end
   end
 end
