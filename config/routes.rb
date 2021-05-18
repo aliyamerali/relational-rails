@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "/drinks/:id", to: 'drinks#show'
   get "/drinks/:id/edit", to: 'drinks#edit'
   patch "/drinks/:id", to: 'drinks#update'
+  delete "/drinks/:id", to: 'drinks#destroy'
 
   get "/libraries", to:'libraries#index'
   get "/libraries/new", to:'libraries#new'
