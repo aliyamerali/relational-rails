@@ -11,9 +11,7 @@ class BartendersController < ApplicationController
   end
 
   def create
-    bartender = Bartender.new(bartender_params)
-
-    bartender.save
+    bartender = Bartender.create!(bartender_params)
     redirect_to '/bartenders'
   end
 
