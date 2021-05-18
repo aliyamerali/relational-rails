@@ -50,4 +50,20 @@ RSpec.describe 'Bartenders show Page' do
   it "I see a link to create a new Bartender" do
     expect(page).to have_link("Update Bartender", href: "/bartenders/#{@bartender1.id}/edit")
   end
+
+  it "I see a link to delete the Bartender" do
+    expect(page).to have_link("Delete Bartender", href: "/bartenders/#{@bartender1.id}")
+  end
+
+  it "I can delete this bartender" do
+    expect(current_path).to eq("/bartenders/#{@bartender1.id}")
+
+    click_link "Delete Bartender"
+
+    expect(current_path).to eq("/bartenders")
+    expect(page).to_not have_content(@bartender1.name)
+    expect(page).to_not have_content(@bartender1.age)
+    expect(page).to_not have_content(@bartender1.on_vacation)
+    expect(page).to_not have_content(@bartender1.city)
+  end
 end
