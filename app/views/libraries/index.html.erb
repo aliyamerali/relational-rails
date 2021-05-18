@@ -9,7 +9,7 @@
         <li>Book Count: <%= library.book_count %></li>
       <% end %>
       <li><em>record created at: <%= library.created_at %></em></li>
-      <li><em><a href="/libraries/<%=library.id%>/edit">Edit <%=library.name%> Library</a></em></li>
+      <li><em><%= link_to "Edit #{library.name} Library", "/libraries/#{library.id}/edit" %></em></li>
       <li><em><%= link_to "Delete #{library.name} Library", "/libraries/#{library.id}", method: :delete %></em></li>
     </ul>
 <% end %>
