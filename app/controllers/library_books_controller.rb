@@ -1,6 +1,6 @@
 class LibraryBooksController < ApplicationController
 
-  def index #TODO: How can both query strings persist in the url?
+  def index
     @library = Library.find(params[:id])
 
     if params[:filter]
@@ -9,8 +9,8 @@ class LibraryBooksController < ApplicationController
       @books = @library.books
     end
 
-    if params[:sort]
-      @books = @library.sort_books_by_name(@books)
+    if params[:sort] == "alpha"
+      @books = @books.sort_by_name
     end
   end
 

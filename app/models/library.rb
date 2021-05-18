@@ -6,18 +6,22 @@ class Library < ApplicationRecord
   end
 
   def self.sort_by_book_count
-    libraries = Library.all
-    libraries.sort_by do |library|
-      library.book_count
-    end.reverse
+    # RUBY
+    # libraries = Library.all
+    # libraries.sort_by do |library|
+    #   library.book_count
+    # end.reverse
+
+    # SQL
+    find_by_sql(' SELECT lib.*, COUNT(books.name) AS book_count
+    FROM libraries lib
+      FULL OUTER JOIN books ON books.library_id = lib.id
+    GROUP BY lib.id
+    ORDER BY book_count DESC ')
   end
 
   def self.sort_by_created_at
     Library.order(created_at: :desc)
-  end
-
-  def sort_books_by_name(books)
-    books.order(name: :asc)
   end
 
   def filter_books_by_published_year(min_year)
