@@ -1,16 +1,20 @@
 <h1>Create a New Library</h1>
 
-<form action="/libraries" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<%= form_with url: "/libraries", method: :post, local: true do |f| %>
+  <%= f.label :name, "Library Name: " %>
+  <%= f.text_field :name %>
 
-  <label for="name">Library Name: </label>
-  <input type='text' name='name'/><br>
-  <label for="staff_count">Library Staff Count: </label>
-  <input type='number' name='staff_count'/><br>
-  <label for="member_count">Library Member Count: </label>
-  <input type='number' name='member_count'/><br>
-  <label for="open">Is this library open?</label>
-    <p><input type="radio" name="open" value=true checked>Yes</input>
-       <input type="radio" name="open" value=false >No</input></p>
-  <input type='submit' name='submit' value = 'Create Library'>
-</form>
+  <%= f.label :staff_count, "Library Staff Count: " %>
+  <%= f.number_field :staff_count %>
+
+  <%= f.label :member_count, "Library Member Count: " %>
+  <%= f.number_field :member_count %>
+
+  <%= f.label :open, "Is this library open?" %>
+    <%= radio_button_tag :open, true %>
+    <%= label_tag :open_yes, "Yes" %>
+    <%= radio_button_tag :open, false %>
+    <%= label_tag :open_no, "No" %>
+
+  <%= f.submit "Create Library" %>
+<% end %>
