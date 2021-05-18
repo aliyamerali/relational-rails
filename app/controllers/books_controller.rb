@@ -2,7 +2,7 @@ class BooksController < ApplicationController
 
   def index
     if params[:search]
-      @books = Book.where("available = true AND name LIKE '#{params[:search]}'")
+      @books = Book.filter_available_by_search(params[:search])
     else
       @books = Book.where(available: true)
     end
