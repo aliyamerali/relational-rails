@@ -33,7 +33,7 @@ RSpec.describe Bartender, type: :model do
   describe 'instance methods' do
     describe '#drinks_count' do
       it "shows the count of the number of children associated with this parent" do
-        expect(@bartender1.drinks_count).to eq(2)
+        expect(@bartender1.drinks_count).to eq(3)
       end
     end
 
