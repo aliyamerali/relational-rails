@@ -23,11 +23,6 @@ describe Library, type: :model do
       expect(@library3.book_count).to eq(0)
     end
 
-    it '#sort_by_name orders books by name' do
-      books = @library2.books
-      expect(@library2.sort_books_by_name(books)).to eq([@book2, @book3])
-    end
-
     it '#filter_books_by_published_year returns books for that library published after entered year' do
       expect(@library2.filter_books_by_published_year(2011)).to eq([@book3])
     end
