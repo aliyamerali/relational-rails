@@ -24,7 +24,12 @@ describe Library, type: :model do
     end
 
     it '#sort_by_name orders books by name' do
-      expect(@library2.sort_books_by_name.to_a).to eq([@book2, @book3])
+      books = @library2.books
+      expect(@library2.sort_books_by_name(books)).to eq([@book2, @book3])
+    end
+
+    it '#filter_books_by_published_year returns books for that library published after entered year' do
+      expect(@library2.filter_books_by_published_year(2011)).to eq([@book3])
     end
   end
 
@@ -38,7 +43,7 @@ describe Library, type: :model do
     it '#sort_by_created_at returns list of libraries sorted by most recently created' do
       expected = [@library1, @library2, @library3]
 
-      expect(Library.sort_by_created_at.to_a).to eq(expected)
+      expect(Library.sort_by_created_at).to eq(expected)
     end
   end
 end
