@@ -86,6 +86,24 @@ RSpec.describe 'Library books index' do
     expect(page).to_not have_content('Harry Potter and the Sorcerer\'s Stone')
   end
 
+  it 'can sort alphabetically and filter by year at the same time' do
+    @book7 = @library1.books.create!(name: "The Vanishing Half", publish_year: 2020, available: false)
+    @book8 = @library1.books.create!(name: "On the Move: A Life", publish_year: 2015, available: true)
+
+    visit "/libraries/#{@library1.id}/books"
+    click_link("Sort Books Alphabetically")
+    fill_in 'filter', with: '2000'
+    click_button 'Only return records with publish_year after this date'
+
+    expect(page).to have_content('1Q84')
+    expect(page).to have_content('On the Move: A Life')
+    expect(page).to have_content('The Vanishing Half')
+    expect(page).to_not have_content('Harry Potter and the Sorcerer\'s Stone')
+
+    expect(@book2.name).to appear_before(@book8.name)
+    expect(@book8.name).to appear_before(@book7.name)
+  end
+
   it 'has a link to delete book next to every book' do
     visit "/libraries/#{@library1.id}/books"
     expect(page).to have_link("Delete '#{@book1.name}'")
