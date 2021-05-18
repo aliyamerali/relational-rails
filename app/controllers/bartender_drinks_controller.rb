@@ -1,7 +1,14 @@
 class BartenderDrinksController < ApplicationController
   def index
     @bartender = Bartender.find(params[:id])
-    @drinks = @bartender.alphabetical_order
+
+    if params[:sort] == "alphabetical"
+      @drinks = @bartender.alphabetical_order
+    elsif params[:filter]
+      @drinks = @bartender.abv_filter(params[:filter])
+    else
+      @drinks = @bartender.drinks
+    end
   end
 
   def new
