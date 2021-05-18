@@ -13,5 +13,7 @@
 
 
   <%= link_to "Drinks for this Bartender", "/bartenders/#{@bartender.id}/drinks" %><br/><br/>
-  
-  <%= link_to "Update Bartender", "/bartenders/#{@bartender.id}/edit" %>
+
+  <%= link_to "Update Bartender", "/bartenders/#{@bartender.id}/edit" %><br/><br/>
+
+  <%= link_to "Delete Bartender", "/bartenders/#{@bartender.id}", method: :delete %><br/><br/>
