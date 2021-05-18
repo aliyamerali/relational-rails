@@ -41,8 +41,8 @@ describe Library, type: :model do
       expect(Library.sort_by_created_at).to eq(expected)
     end
 
-    it '#filter_by_search returns only libraries with exact matches to search' do
-      expect(Library.filter_by_search("Denver Central")).to eq([@library1])
+    it '#filter_by_search_exact returns only libraries with exact matches to search' do
+      expect(Library.filter_by_search_exact("Denver Central")).to eq([@library1])
     end
   end
 end
