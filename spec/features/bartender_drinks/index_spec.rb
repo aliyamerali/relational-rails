@@ -50,6 +50,14 @@ RSpec.describe 'Bartender Drinks Index Page' do
     expect(page).to have_link("Sort Drinks", href: "/bartenders/#{@bartender1.id}/drinks?sort=alphabetical")
   end
 
+  it "shows drinks in alphabetical order" do
+    expect(@drink1.name).to appear_before(@drink2.name)
+
+    click_link 'Sort Drinks'
+
+    expect(@drink2.name).to appear_before(@drink1.name)
+  end
+
   it "I see an edit link next to each drink" do
     expect(page).to have_link("Edit", href: "/drinks/#{@drink1.id}/edit")
   end
@@ -66,7 +74,7 @@ RSpec.describe 'Bartender Drinks Index Page' do
 
   it "I see a form that allows me to input a number value and when I click submit only the records that meet that threshold are shown" do
     expect(current_path).to eq("/bartenders/#{@bartender1.id}/drinks")
-    
+
     expect(page).to have_field("filter")
 
     fill_in 'filter', with: '13'
