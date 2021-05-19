@@ -8,4 +8,12 @@
     <li>Popular? <%= drink.popular %></li><br/>
     <p>----------------------------------</p>
   </section>
-<% end %>
+<% end %><br/>
+
+<section id="drink-results-form">
+  <%= form_with url: "/drinks", method: :get, local: true do |f| %>
+  <%= f.label 'Filter Results by Keyword' %>
+  <%= f.text_field :filter %>
+  <%= f.submit 'Search' %>
+  <% end %><br/>
+</section>
