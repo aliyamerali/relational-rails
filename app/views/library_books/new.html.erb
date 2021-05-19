@@ -1,4 +1,4 @@
-<h1>Create a New Book</h1>
+<h3>Create a New Book</h3>
 
 <%= form_with url: "/libraries/#{@library.id}/books", method: :post, local: true do |f| %>
   <%= f.label :name, "Book Name: " %>
@@ -12,7 +12,7 @@
     <%= radio_button_tag :available, true %>
     <%= label_tag :available_no, "No" %>
     <%= radio_button_tag :available, false %>
-  <br>
+  <br><br>
   <%= f.submit "Create Book"  %>
   <br><br>
 <% end %>

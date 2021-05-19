@@ -18,19 +18,19 @@
   font-family: 	Helvetica;
 }
 
-  ul.topnav {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    overflow: hidden;
-    background-color: #d0826F;
-  }
+ul.topnav {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  overflow: hidden;
+  background-color: #d0826F;
+}
 
-  li.topnav {
-    float: left;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
+li.topnav {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}

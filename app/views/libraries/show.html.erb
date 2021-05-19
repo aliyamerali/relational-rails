@@ -1,8 +1,9 @@
 <h3><%= @library.name %> Library</h3>
 
 <%= link_to "Books at this Library", "/libraries/#{@library.id}/books" %>
+<br>
+<%= link_to "Update Library", "/libraries/#{@library.id}/edit" %>
 
-<%= button_to "Delete Library", "/libraries/#{@library.id}", method: :delete %>
 <ul>
   <li>Total Book Count: <%=@book_count %></li>
   <li>Staff Count: <%=@library.staff_count %></li>
@@ -10,4 +11,5 @@
   <li>Currently Open: <%=@library.open %></li>
 </ul>
 
-<%= link_to "Update Library", "/libraries/#{@library.id}/edit" %>
+<br>
+<%= button_to "Delete Library", "/libraries/#{@library.id}", method: :delete %>
