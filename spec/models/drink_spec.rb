@@ -30,8 +30,16 @@ RSpec.describe Drink, type: :model do
     end
 
     describe '.filter_drinks' do
-      it "will show filter the bartenders by keyword" do
+      it "will show filter the drinks by keyword" do
         expect(Drink.filter_drinks("Mojito")).to eq([@drink3])
+        expect(Drink.filter_drinks("Mojito")).to_not eq([@drink4])
+      end
+    end
+
+    describe '.partial_filter' do
+      it "will filter the drinks by partial keyword" do
+        expect(Drink.partial_filter("ito")).to eq([@drink3])
+        expect(Drink.partial_filter("ito")).to_not eq([@drink6])
       end
     end
   end
