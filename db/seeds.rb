@@ -6,9 +6,9 @@ Library.destroy_all
 Book.destroy_all
 
 
-@bartender1 = Bartender.create!(name: "Steve", age: 32, on_vacation: false, city: "Denver")
-@bartender2 = Bartender.create!(name: "Jill", age: 27, on_vacation: true, city: "Baltimore")
-@bartender3 = Bartender.create!(name: "Aaron", age: 36, on_vacation: false, city: "Austin")
+@bartender1 = Bartender.create!(name: "Steve", age: 32, on_vacation: false, city: "Denver", created_at: DateTime.new(2021,2,3,4,5,6))
+@bartender2 = Bartender.create!(name: "Jill", age: 27, on_vacation: true, city: "Baltimore", created_at: DateTime.new(2020,2,3,4,5,6))
+@bartender3 = Bartender.create!(name: "Aaron", age: 36, on_vacation: false, city: "Austin", created_at: DateTime.new(2019,2,3,4,5,6))
 
 @drink1 = @bartender1.drinks.create!(name: "Martini", cost: 4.00, abv: 11, popular: true)
 @drink2 = @bartender1.drinks.create!(name: "4 horsmen", cost: 11.00, abv: 18, popular: false)
