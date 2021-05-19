@@ -6,6 +6,15 @@ RSpec.describe 'Bartenders Index Page' do
     @bartender2 = Bartender.create!(name: "Jill", age: 27, on_vacation: true, city: "Baltimore", created_at: "2021-03-24 10:10:42")
     @bartender3 = Bartender.create!(name: "Aaron", age: 36, on_vacation: false, city: "Austin", created_at: "2021-03-28 20:10:42")
 
+    @drink1 = @bartender1.drinks.create!(name: "Martini", cost: 4.00, abv: 11, popular: true)
+
+    @drink2 = @bartender2.drinks.create!(name: "4 horsmen", cost: 11.00, abv: 18, popular: false)
+    @drink3 = @bartender2.drinks.create!(name: "Mojito", cost: 7.00, abv: 10, popular: true)
+    @drink4 = @bartender2.drinks.create!(name: "Mai Tai", cost: 9.00, abv: 13, popular: true)
+
+    @drink5 = @bartender3.drinks.create!(name: "Hurricane", cost: 6.00, abv: 5, popular: false)
+    @drink6 = @bartender3.drinks.create!(name: "Gin and Tonic", cost: 7.00, abv: 9, popular: true)
+
     visit "/bartenders"
   end
 
@@ -68,5 +77,16 @@ And next to each of the bartenders I see when it was created" do
 
     expect(current_path).to eq("/bartenders")
     expect(page).to_not have_content(@bartender1.name)
+  end
+
+  it "If I click the 'Sort by Drink count' link then the bartenders are ordered and their drink count next to them" do
+    expect(current_path).to eq("/bartenders")
+    expect(page).to_not have_content('Drink Count')
+
+    click_link 'Sort by Drink count'
+
+    expect(@bartender2.name).to appear_before(@bartender1.name)
+    expect(page).to have_content('Drink Count')
+    expect(current_path).to eq("/bartenders")
   end
 end
