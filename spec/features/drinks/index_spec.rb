@@ -84,4 +84,8 @@ RSpec.describe 'Drinks Index Page' do
     expect(current_path).to eq("/drinks")
     expect(page).to_not have_content(@drink1.name)
   end
+
+  it "I can see a for to 'filter results by keyword'" do
+    expect(page).to have_field('filter')
+  end
 end
