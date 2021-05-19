@@ -2,6 +2,8 @@ class DrinksController < ApplicationController
   def index
     if params[:filter]
       @drinks = Drink.filter_drinks(params[:filter])
+    elsif params[:partial_filter]
+      @drinks = Drink.partial_filter(params[:partial_filter])
     else
       @drinks = Drink.all.popular_drink
     end
