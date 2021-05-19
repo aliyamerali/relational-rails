@@ -1,6 +1,10 @@
 class BartendersController < ApplicationController
   def index
-    @bartenders = Bartender.most_recently_created
+    if params[:count] == "drinks"
+      @bartenders = Bartender.number_of_bartender_drinks
+    else
+      @bartenders = Bartender.most_recently_created
+    end
   end
 
   def show

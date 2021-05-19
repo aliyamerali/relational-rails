@@ -3,9 +3,17 @@
 <% @bartenders.each do |bartender| %>
   <section id="bartender-<%= bartender.id %>">
     <ul>
-      <li><%= bartender.name %> - started working on: <%= bartender.created_at %> <%= link_to "Edit", "/bartenders/#{bartender.id}/edit" %> <%= link_to "Delete Bartender", "/bartenders/#{bartender.id}", method: :delete %><br/><br/></li><br/>
+      <% if params[:count] == "drinks" %>
+      <li><%= bartender.name %> - Drink Count : <%= bartender.drinks_count %> - started working on: <%= bartender.created_at %> <%= link_to "Edit", "/bartenders/#{bartender.id}/edit" %> <%= link_to "Delete Bartender", "/bartenders/#{bartender.id}", method: :delete %><br/><br/></li>
+      <p>-------------------------------------------------------------</p>
+      <% else %>
+      <li><%= bartender.name %> - started working on: <%= bartender.created_at %> <%= link_to "Edit", "/bartenders/#{bartender.id}/edit" %> <%= link_to "Delete Bartender", "/bartenders/#{bartender.id}", method: :delete %><br/><br/></li>
+      <p>-------------------------------------------------------------</p>
     </ul>
+    <% end %>
   </section>
-<% end %>
+<% end %><br/>
+
+<%= link_to "Sort by Drink count", "/bartenders?count=drinks" %><br/><br/>
 
 <%= link_to "New Bartender", "/bartenders/new" %>
