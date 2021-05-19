@@ -10,10 +10,18 @@
   </section>
 <% end %><br/>
 
-<section id="drink-results-form">
+<section id="drinks-results-form">
   <%= form_with url: "/drinks", method: :get, local: true do |f| %>
   <%= f.label 'Filter Results by Keyword' %>
   <%= f.text_field :filter %>
   <%= f.submit 'Search' %>
-  <% end %><br/>
-</section>
+  <% end %>
+</section><br/>
+
+<section id="drinks-partial-results-form">
+  <%= form_with url: "/drinks", method: :get, local: true do |f| %>
+  <%= f.label 'Filter Results by partial Keyword' %>
+  <%= f.text_field :partial_filter %>
+  <%= f.submit 'Search' %>
+  <% end %>
+</section><br/>
