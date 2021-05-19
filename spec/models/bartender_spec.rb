@@ -36,8 +36,16 @@ RSpec.describe Bartender, type: :model do
     end
 
     describe '.filter_bartenders' do
-      it "will show filter the bartenders by keyword" do
+      it "will filter the bartenders by keyword" do
         expect(Bartender.filter_bartenders("Jill")).to eq([@bartender2])
+        expect(Bartender.filter_bartenders("Jill")).to_not eq([@bartender3])
+      end
+    end
+
+    describe '.partial_filter' do
+      it "will filter the bartenders by partial keyword" do
+        expect(Bartender.partial_filter("ro")).to eq([@bartender3])
+        expect(Bartender.partial_filter("ro")).to_not eq([@bartender1])
       end
     end
   end

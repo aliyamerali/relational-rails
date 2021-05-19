@@ -85,7 +85,31 @@ RSpec.describe 'Drinks Index Page' do
     expect(page).to_not have_content(@drink1.name)
   end
 
-  it "I can see a for to 'filter results by keyword'" do
+  it "I can see a form to 'filter results by keyword'" do
     expect(page).to have_field('filter')
+    expect(page).to have_content('Mojito')
+    expect(page).to have_content('Mai Tai')
+
+    within("#drinks-results-form") do
+      fill_in 'filter', with: 'Mojito'
+      click_button 'Search'
+    end
+
+    expect(page).to have_content('Mojito')
+    expect(page).to_not have_content('Mai Tai')
+  end
+
+  it "I can see a form to 'filter results by partial keyword'" do
+    expect(page).to have_field('filter')
+    expect(page).to have_content('Mojito')
+    expect(page).to have_content('Mai Tai')
+
+    within("#drinks-partial-results-form") do
+      fill_in 'partial_filter', with: 'ito'
+      click_button 'Search'
+    end
+
+    expect(page).to have_content('Mojito')
+    expect(page).to_not have_content('Mai Tai')
   end
 end
