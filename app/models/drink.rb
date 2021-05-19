@@ -8,4 +8,8 @@ class Drink < ApplicationRecord
   def self.filter_drinks(input)
     where(name: input)
   end
+
+  def self.partial_filter(input)
+    where('name ILIKE ?', "%#{input}%")
+  end
 end

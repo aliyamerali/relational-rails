@@ -26,4 +26,8 @@ class Bartender < ApplicationRecord
   def self.filter_bartenders(input)
     where(name: input)
   end
+
+  def self.partial_filter(input)
+    where('name ILIKE ?', "%#{input}%")
+  end
 end
