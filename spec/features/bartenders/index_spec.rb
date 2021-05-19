@@ -90,7 +90,35 @@ And next to each of the bartenders I see when it was created" do
     expect(current_path).to eq("/bartenders")
   end
 
-  it "I can see a for to 'filter results by keyword'" do
+  it "I can see a form to 'filter results by keyword'" do
     expect(page).to have_field('filter')
+    expect(page).to have_content('Steve')
+    expect(page).to have_content('Jill')
+    expect(page).to have_content('Aaron')
+
+    within("#bartender-results-form") do
+      fill_in 'filter', with: 'Jill'
+      click_button 'Search'
+    end
+
+    expect(page).to have_content('Jill')
+    expect(page).to_not have_content('Steve')
+    expect(page).to_not have_content('Aaron')
+  end
+
+  it "I can see a form to 'filter results by partial keyword'" do
+    expect(page).to have_field('filter')
+    expect(page).to have_content('Steve')
+    expect(page).to have_content('Jill')
+    expect(page).to have_content('Aaron')
+
+    within("#bartender-partial-results-form") do
+      fill_in 'partial_filter', with: 'll'
+      click_button 'Search'
+    end
+
+    expect(page).to have_content('Jill')
+    expect(page).to_not have_content('Steve')
+    expect(page).to_not have_content('Aaron')
   end
 end
