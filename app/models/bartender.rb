@@ -16,4 +16,10 @@ class Bartender < ApplicationRecord
   def alphabetical_order
     drinks.order(:name)
   end
+
+  def self.number_of_bartender_drinks
+    joins(:drinks)
+    .group(:id)
+    .order('count(drinks.id) desc')
+  end
 end
