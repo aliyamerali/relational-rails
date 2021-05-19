@@ -10,12 +10,17 @@
   </head>
 
   <body>
-    <div class="topnav">
-      <%= link_to "Drinks Home Page", "/drinks" %>
-      <%= link_to "Bartenders Home Page", "/bartenders" %>
-      <a href="/books">Books Index</a>
-      <a href="/libraries">Libraries Index</a>
-    </div><br/><br/>
+    <div>
+      <ul class="topnav">
+        <li class="topnav"><%= link_to "Bartenders Home Page", "/bartenders" %></li>
+        <li class="topnav"><%= link_to "Drinks Home Page", "/drinks" %></li>
+        <li class="topnav"><a href="/libraries">Libraries Index</a></li>
+        <li class="topnav"><a href="/books">Books Index</a></li>
+      </ul>
+    </div>
+
+    <br>
+
     <%= yield %>
   </body>
 </html>
