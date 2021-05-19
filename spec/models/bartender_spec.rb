@@ -28,6 +28,13 @@ RSpec.describe Bartender, type: :model do
         expect(Bartender.most_recently_created).to eq(expected)
       end
     end
+
+    describe '.number_of_bartender_drinks' do
+      it "will show bartenders in the order how many drinks they have" do
+        expected = [@bartender1, @bartender2, @bartender3]
+        expect(Bartender.number_of_bartender_drinks).to eq(expected)
+      end
+    end
   end
 
   describe 'instance methods' do
