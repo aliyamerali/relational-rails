@@ -89,4 +89,8 @@ And next to each of the bartenders I see when it was created" do
     expect(page).to have_content('Drink Count')
     expect(current_path).to eq("/bartenders")
   end
+
+  it "I can see a for to 'filter results by keyword'" do
+    expect(page).to have_field('filter')
+  end
 end

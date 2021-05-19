@@ -2,6 +2,8 @@ class BartendersController < ApplicationController
   def index
     if params[:count] == "drinks"
       @bartenders = Bartender.number_of_bartender_drinks
+    elsif params[:filter]
+      @bartenders = Bartender.filter_bartenders(params[:filter])
     else
       @bartenders = Bartender.most_recently_created
     end

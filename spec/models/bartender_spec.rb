@@ -18,7 +18,6 @@ RSpec.describe Bartender, type: :model do
     @drink4 = @bartender2.drinks.create!(name: "Mai Tai", cost: 9.00, abv: 13, popular: true)
 
     @drink5 = @bartender3.drinks.create!(name: "Hurricane", cost: 6.00, abv: 5, popular: false)
-    @drink6 = @bartender3.drinks.create!(name: "Gin and Tonic", cost: 7.00, abv: 9, popular: true)
   end
 
   describe 'class methods' do
@@ -33,6 +32,12 @@ RSpec.describe Bartender, type: :model do
       it "will show bartenders in the order how many drinks they have" do
         expected = [@bartender1, @bartender2, @bartender3]
         expect(Bartender.number_of_bartender_drinks).to eq(expected)
+      end
+    end
+
+    describe '.filter_bartenders' do
+      it "will show filter the bartenders by keyword" do
+        expect(Bartender.filter_bartenders("Jill")).to eq([@bartender2])
       end
     end
   end

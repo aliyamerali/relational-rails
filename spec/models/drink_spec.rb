@@ -28,5 +28,11 @@ RSpec.describe Drink, type: :model do
         expect(Drink.popular_drink).to_not eq([@drink2, @drink5])
       end
     end
+
+    describe '.filter_drinks' do
+      it "will show filter the bartenders by keyword" do
+        expect(Drink.filter_drinks("Mojito")).to eq([@drink3])
+      end
+    end
   end
 end

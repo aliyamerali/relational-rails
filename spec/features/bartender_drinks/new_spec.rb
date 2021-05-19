@@ -38,7 +38,7 @@ RSpec.describe 'Bartenders Drinks New Page' do
     expect(current_path).to eq("/bartenders/#{@bartender1.id}/drinks")
 
     expect(page).to have_content("Screw Driver")
-    expect(page).to have_content("$ 3.0")
+    expect(page).to have_content("$3.00")
     expect(page).to have_content(13)
     expect(page).to have_content("Popular ? true")
   end

@@ -1,6 +1,10 @@
 class DrinksController < ApplicationController
   def index
-    @drinks = Drink.all.popular_drink
+    if params[:filter]
+      @drinks = Drink.filter_drinks(params[:filter])
+    else
+      @drinks = Drink.all.popular_drink
+    end
   end
 
   def show

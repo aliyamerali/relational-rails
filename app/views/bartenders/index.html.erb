@@ -14,6 +14,14 @@
   </section>
 <% end %><br/>
 
+<section id="bartender-results-form">
+  <%= form_with url: "/bartenders", method: :get, local: true do |f| %>
+    <%= f.label 'Filter Results by Keyword' %>
+    <%= f.text_field :filter %>
+    <%= f.submit 'Search' %>
+  <% end %><br/>
+</section>
+
 <%= link_to "Sort by Drink count", "/bartenders?count=drinks" %><br/><br/>
 
 <%= link_to "New Bartender", "/bartenders/new" %>
