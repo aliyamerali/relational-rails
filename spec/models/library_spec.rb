@@ -31,6 +31,7 @@ describe Library, type: :model do
   describe 'class methods' do
     it '#sort_by_book_count returns a list of libraries ordered by book count' do
       expected = [@library2, @library1, @library3]
+      binding.pry
 
       expect(Library.sort_by_book_count).to eq(expected)
     end
